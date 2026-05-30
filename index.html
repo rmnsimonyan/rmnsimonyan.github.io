@@ -716,14 +716,98 @@
       line-height: 1.35;
     }
 
-    /* ───────────── MEDIA ───────────── */
-    .media-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.75rem;
-      margin-top: 1rem;
+    /* ───────────── MEDIA / ENGAGEMENT ───────────── */
+
+    .engage-subsection { margin-top: 3rem; }
+    .engage-subsection:first-child { margin-top: 0; }
+
+    .subsection-label {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1.5rem;
+    }
+    .subsection-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
     }
 
+    /* ── Carousel ── */
+    .carousel-wrap { position: relative; }
+
+    .carousel-track-outer {
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 1.5rem;
+      transition: transform .45s cubic-bezier(.25,.8,.25,1);
+      will-change: transform;
+    }
+
+    .carousel-track .media-card {
+      flex: 0 0 calc(33.333% - 1rem);
+      min-width: 280px;
+    }
+
+    @media (max-width: 900px) {
+      .carousel-track .media-card { flex: 0 0 calc(50% - .75rem); }
+    }
+    @media (max-width: 600px) {
+      .carousel-track .media-card { flex: 0 0 90vw; }
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: rgba(0,191,165,.18);
+      border: 1px solid var(--teal);
+      color: var(--teal);
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      transition: background var(--transition);
+      backdrop-filter: blur(8px);
+    }
+    .carousel-btn:hover { background: rgba(0,191,165,.35); }
+    .carousel-btn.prev { left: -1.3rem; }
+    .carousel-btn.next { right: -1.3rem; }
+    .carousel-btn:disabled { opacity: .25; cursor: default; }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: .45rem;
+      margin-top: 1.25rem;
+    }
+    .carousel-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--text-muted);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      padding: 0;
+    }
+    .carousel-dot.active { background: var(--teal); transform: scale(1.3); }
+
+    /* ── Media card (shared) ── */
     .media-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -732,55 +816,73 @@
       transition: transform var(--transition), box-shadow var(--transition);
       backdrop-filter: blur(8px);
     }
-
     .media-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 40px rgba(0,191,165,.12);
     }
-
     .media-card video, .media-card iframe {
-      width: 100%;
-      aspect-ratio: 16/9;
-      display: block;
-      background: #000;
+      width: 100%; aspect-ratio: 16/9; display: block; background: #000;
     }
-
-    .media-card-body {
-      padding: 1rem 1.25rem 1.25rem;
-    }
-
+    .media-card-body { padding: 1rem 1.25rem 1.25rem; }
     .media-card-tag {
-      font-size: .7rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: .4rem;
+      font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--teal); margin-bottom: .4rem;
     }
-
     .media-card-title {
-      font-size: .95rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      line-height: 1.4;
-      margin-bottom: .4rem;
+      font-size: .95rem; font-weight: 600; color: var(--text-primary);
+      line-height: 1.4; margin-bottom: .4rem;
     }
-
-    .media-card-desc {
-      font-size: .82rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
+    .media-card-desc { font-size: .82rem; color: var(--text-secondary); line-height: 1.5; }
     .media-card-link {
-      display: inline-flex;
-      align-items: center;
-      gap: .35rem;
-      margin-top: .75rem;
-      font-size: .8rem;
-      font-weight: 600;
-      color: var(--teal);
+      display: inline-flex; align-items: center; gap: .35rem;
+      margin-top: .75rem; font-size: .8rem; font-weight: 600; color: var(--teal);
     }
+
+    /* ── Education cards ── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .khan-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      backdrop-filter: blur(8px);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .khan-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,191,165,.1); }
+
+    .khan-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: linear-gradient(135deg,#14bf96,#1ca86a);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(20,191,150,.3);
+    }
+
+    .article-list { list-style: none; display: flex; flex-direction: column; gap: .85rem; }
+    .article-list li {
+      display: flex; align-items: flex-start; gap: .85rem;
+      padding: 1rem 1.25rem;
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: var(--radius); backdrop-filter: blur(8px);
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .article-list li:hover { border-color: var(--teal); transform: translateX(4px); }
+    .article-list .art-icon { color: var(--teal); font-size: 1rem; margin-top: .15rem; flex-shrink: 0; }
+    .article-list .art-body { flex: 1; }
+    .article-list .art-tag {
+      font-size: .68rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: .25rem;
+    }
+    .article-list .art-title { font-size: .9rem; font-weight: 600; color: var(--text-primary); line-height: 1.4; }
+    .article-list .art-desc { font-size: .8rem; color: var(--text-secondary); margin-top: .2rem; }
 
     /* ───────────── CONTACT ───────────── */
     #contact { text-align: center; }
@@ -1380,107 +1482,233 @@
     </div>
   </section>
 
-  <!-- ═══ MEDIA ═══ -->
+  <!-- ═══ MEDIA & ENGAGEMENT ═══ -->
   <section id="media">
     <div class="max-width">
-      <p class="section-label fade-in">06 / Media</p>
-      <h2 class="section-title fade-in">In the <span>Spotlight</span></h2>
+      <p class="section-label fade-in">06 / Public Engagement</p>
+      <h2 class="section-title fade-in">Media, Education <span>&amp; Outreach</span></h2>
       <div class="section-divider fade-in"></div>
-      <div class="media-grid" id="mediaGrid">
 
-        <!-- DDSA LinkedIn video -->
-        <div class="media-card fade-in">
-          <video controls preload="none">
-            <source src="ddsa_arman_simonyan_2023.mp4" type="video/mp4">
-          </video>
-          <div class="media-card-body">
-            <div class="media-card-tag"><i class="fa-solid fa-video"></i> Video · 2023</div>
-            <div class="media-card-title">DDSA PhD Fellow Presentation — AI-Powered GPCR Drug Discovery</div>
-            <div class="media-card-desc">Featured by the Danish Data Science Academy as part of the 2023 PhD Fellow cohort. Presents my research on machine learning-driven peptide and drug design for G protein-coupled receptors.</div>
-            <a class="media-card-link" href="https://ddsa.dk/member/arman-simonyan/" target="_blank" rel="noopener">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> DDSA Fellow Profile
-            </a>
-          </div>
+      <!-- ── SUBSECTION: Media Appearances (carousel) ── -->
+      <div class="engage-subsection fade-in">
+        <div class="subsection-label"><i class="fa-solid fa-satellite-dish"></i> Media Appearances</div>
+        <div class="carousel-wrap">
+          <button class="carousel-btn prev" id="c1prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+          <div class="carousel-track-outer">
+            <div class="carousel-track" id="c1track">
+
+              <div class="media-card">
+                <video controls preload="none">
+                  <source src="ddsa_arman_simonyan_2023.mp4" type="video/mp4">
+                </video>
+                <div class="media-card-body">
+                  <div class="media-card-tag"><i class="fa-solid fa-video"></i> Video · DDSA · 2023</div>
+                  <div class="media-card-title">DDSA PhD Fellow Presentation — AI-Powered GPCR Drug Discovery</div>
+                  <div class="media-card-desc">Featured by the Danish Data Science Academy as part of the 2023 PhD Fellow cohort, presenting ML-driven peptide and drug design for GPCRs.</div>
+                  <a class="media-card-link" href="https://ddsa.dk/member/arman-simonyan/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> DDSA Profile</a>
+                </div>
+              </div>
+
+              <div class="media-card">
+                <div style="background:linear-gradient(135deg,#1a0a2e,#1e1640);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;padding:2rem">
+                  <div style="text-align:center">
+                    <div style="font-size:2.5rem;margin-bottom:.5rem">🧠</div>
+                    <span style="font-size:.85rem;color:#a0b0c8;font-weight:600">Harvard Brain Science Initiative</span>
+                  </div>
+                </div>
+                <div class="media-card-body">
+                  <div class="media-card-tag"><i class="fa-solid fa-user"></i> Profile · Harvard · 2019</div>
+                  <div class="media-card-title">HBI Humans: Arman Simonyan</div>
+                  <div class="media-card-desc">"I am inspired by the void I can fill." — Interview during his research residency at Harvard Medical School &amp; Massachusetts Eye and Ear, working on Dystonia brain signals.</div>
+                  <a class="media-card-link" href="https://brain.harvard.edu/hbi_humans/arman-simonyan/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read profile</a>
+                </div>
+              </div>
+
+              <div class="media-card">
+                <a href="https://mediamax.am/en/specialprojects/mathart/35715/" target="_blank" rel="noopener">
+                  <img src="https://mediamax.am/datas/znews/big_/2019/11/1574688130_7143273.jpg" alt="MediaMax MathArt" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">
+                </a>
+                <div class="media-card-body">
+                  <div class="media-card-tag"><i class="fa-solid fa-newspaper"></i> Press · MediaMax · 2019</div>
+                  <div class="media-card-title">Children should enjoy learning math</div>
+                  <div class="media-card-desc">MediaMax MathArt special project feature on the intersection of science, mathematics, and creativity, following his International Biology Olympiad medals.</div>
+                  <a class="media-card-link" href="https://mediamax.am/en/specialprojects/mathart/35715/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read article</a>
+                </div>
+              </div>
+
+              <div class="media-card">
+                <iframe src="https://www.youtube.com/embed/0z7F1RtZoJY" title="Growing organs outside the body — Armenian Public TV (2017)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                <div class="media-card-body">
+                  <div class="media-card-tag"><i class="fa-brands fa-youtube"></i> TV Feature · Armenian Public TV · 2017</div>
+                  <div class="media-card-title">First Experiments Growing Organs Outside the Body in Armenia</div>
+                  <div class="media-card-desc">Armenian national television (1tv.am) feature on tissue engineering work at the Orbeli Institute of Physiology during his research residency.</div>
+                </div>
+              </div>
+
+              <div class="media-card">
+                <iframe src="https://www.youtube.com/embed/GQP8U6nU52k" title="Biology Olympiad medalist — painter interview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                <div class="media-card-body">
+                  <div class="media-card-tag"><i class="fa-brands fa-youtube"></i> Interview · 2015</div>
+                  <div class="media-card-title">The Biology Olympiad Medalist's Second Passion: Painting</div>
+                  <div class="media-card-desc">Profile following his IBO bronze medal — exploring how his brushwork combines expressionism and impressionism alongside his scientific pursuits.</div>
+                </div>
+              </div>
+
+              <div class="media-card">
+                <iframe src="https://www.youtube.com/embed/IoO5QA5BkSw" title="Arman Simonyan — MEK KADR Short Film Festival" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                <div class="media-card-body">
+                  <div class="media-card-tag"><i class="fa-solid fa-film"></i> Film · MEK KADR Festival · 2018</div>
+                  <div class="media-card-title">Մնացի ես (I Stayed) — 16th International Short Film Festival</div>
+                  <div class="media-card-desc">Arman's short film screened at the MEK KADR (ONE FRAME) 16th International Short Film Festival Open Platform, June 2018.</div>
+                </div>
+              </div>
+
+            </div><!-- /carousel-track -->
+          </div><!-- /track-outer -->
+          <button class="carousel-btn next" id="c1next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
+        <div class="carousel-dots" id="c1dots"></div>
+      </div>
 
-        <!-- Harvard Brain Science Initiative profile -->
-        <div class="media-card fade-in">
-          <div style="background:linear-gradient(135deg,#1a1a2e,#16213e);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;padding:2rem">
-            <div style="text-align:center">
-              <img src="https://brain.harvard.edu/wp-content/themes/hbi/images/hbi-logo.png" alt="Harvard Brain Science Initiative" style="max-height:48px;filter:brightness(0) invert(1);opacity:.85;margin-bottom:.75rem;display:block;margin-left:auto;margin-right:auto" onerror="this.style.display='none'">
-              <span style="font-size:.8rem;color:#a0b0c8;letter-spacing:.05em">Harvard Brain Science Initiative</span>
+      <!-- ── SUBSECTION: CS Education Videos ── -->
+      <div class="engage-subsection fade-in">
+        <div class="subsection-label"><i class="fa-solid fa-chalkboard-user"></i> CS Education — Hungry Lemon Panda</div>
+        <p style="color:var(--text-secondary);font-size:.9rem;margin-bottom:1.5rem;max-width:700px">
+          A series of computer science explainer videos in Armenian, produced under the <strong style="color:var(--text-primary)">Hungry Lemon Panda</strong> channel — making programming concepts accessible to Armenian-speaking students through clear, animated explanations.
+        </p>
+        <div class="carousel-wrap">
+          <button class="carousel-btn prev" id="c2prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+          <div class="carousel-track-outer">
+            <div class="carousel-track" id="c2track">
+
+              <div class="media-card">
+                <iframe src="https://www.youtube.com/embed/o_Yuro_0KAY" title="Binary System in Armenian" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                <div class="media-card-body">
+                  <div class="media-card-tag"><i class="fa-solid fa-code"></i> CS Education · Armenian · No. 1</div>
+                  <div class="media-card-title">Հաշվարկման երկուական համակարգը — Binary System</div>
+                  <div class="media-card-desc">Introduction to the binary number system, the foundation of all digital computing — explained in Armenian for students.</div>
+                </div>
+              </div>
+
+              <div class="media-card">
+                <iframe src="https://www.youtube.com/embed/K_ju4SMKdtA" title="Variables in Armenian" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                <div class="media-card-body">
+                  <div class="media-card-tag"><i class="fa-solid fa-code"></i> CS Education · Armenian · No. 2</div>
+                  <div class="media-card-title">Փոփոխականներ — Variables</div>
+                  <div class="media-card-desc">Understanding variables in programming — a core building block of all software, explained simply in Armenian.</div>
+                </div>
+              </div>
+
+              <div class="media-card">
+                <iframe src="https://www.youtube.com/embed/ZEWtwEbZcFo" title="Boolean Operators in Armenian" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                <div class="media-card-body">
+                  <div class="media-card-tag"><i class="fa-solid fa-code"></i> CS Education · Armenian · No. 3</div>
+                  <div class="media-card-title">Բուլյան օպերատորներ — Boolean Operators</div>
+                  <div class="media-card-desc">Boolean logic and operators — AND, OR, NOT — explained in Armenian with practical programming examples.</div>
+                </div>
+              </div>
+
+              <div class="media-card">
+                <iframe src="https://www.youtube.com/embed/YKtEufmA4Kw" title="Recursion in Armenian" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                <div class="media-card-body">
+                  <div class="media-card-tag"><i class="fa-solid fa-code"></i> CS Education · Armenian · No. 4</div>
+                  <div class="media-card-title">Recursion — Explained by Hungry Lemon Panda</div>
+                  <div class="media-card-desc">Recursion demystified — one of the trickiest concepts in computer science, made intuitive in Armenian.</div>
+                </div>
+              </div>
+
+              <div class="media-card">
+                <iframe src="https://www.youtube.com/embed/7v1Rxg6af60" title="Recursive Factorial in Armenian" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                <div class="media-card-body">
+                  <div class="media-card-tag"><i class="fa-solid fa-code"></i> CS Education · Armenian · No. 5</div>
+                  <div class="media-card-title">Recursive Factorial — Hungry Lemon Dracula</div>
+                  <div class="media-card-desc">A worked example of recursion using the classic factorial function, with clear step-by-step reasoning in Armenian.</div>
+                </div>
+              </div>
+
+              <div class="media-card">
+                <iframe src="https://www.youtube.com/embed/yYF5H4Vs6yQ" title="TriangleStars Function in Armenian" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                <div class="media-card-body">
+                  <div class="media-card-tag"><i class="fa-solid fa-code"></i> CS Education · Armenian · No. 6</div>
+                  <div class="media-card-title">The TriangleStars Function — Hungry Lemon Panda</div>
+                  <div class="media-card-desc">Putting it all together — a practical recursive function building triangle patterns, illustrating clean algorithmic thinking.</div>
+                </div>
+              </div>
+
             </div>
           </div>
-          <div class="media-card-body">
-            <div class="media-card-tag"><i class="fa-solid fa-newspaper"></i> Profile · Harvard · 2019</div>
-            <div class="media-card-title">HBI Humans: Arman Simonyan</div>
-            <div class="media-card-desc">"What's the cause of the rare movement disorder called Dystonia? No one knows for sure… But we are trying to figure that out!" — Interview profile during his research residency at Harvard Medical School &amp; Massachusetts Eye and Ear.</div>
-            <a class="media-card-link" href="https://brain.harvard.edu/hbi_humans/arman-simonyan/" target="_blank" rel="noopener">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> Read full profile
-            </a>
-          </div>
+          <button class="carousel-btn next" id="c2next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
-
-        <!-- MediaMax article -->
-        <div class="media-card fade-in">
-          <a href="https://mediamax.am/en/specialprojects/mathart/35715/" target="_blank" rel="noopener">
-            <img src="https://mediamax.am/datas/znews/big_/2019/11/1574688130_7143273.jpg"
-              alt="Arman Simonyan - MediaMax MathArt"
-              style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">
-          </a>
-          <div class="media-card-body">
-            <div class="media-card-tag"><i class="fa-solid fa-newspaper"></i> Press · MediaMax · 2019</div>
-            <div class="media-card-title">Arman Simonyan: Children should enjoy learning math</div>
-            <div class="media-card-desc">Feature article in MediaMax's MathArt special project — on the intersection of science, mathematics, and creativity, following his International Biology Olympiad medals.</div>
-            <a class="media-card-link" href="https://mediamax.am/en/specialprojects/mathart/35715/" target="_blank" rel="noopener">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> Read article
-            </a>
-          </div>
-        </div>
-
-        <!-- YouTube 1 — Armenian Public TV, tissue engineering -->
-        <div class="media-card fade-in">
-          <iframe src="https://www.youtube.com/embed/0z7F1RtZoJY"
-            title="Growing organs outside the body — Armenian Public TV (2017)"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
-          <div class="media-card-body">
-            <div class="media-card-tag"><i class="fa-brands fa-youtube"></i> TV Feature · Armenian Public TV · 2017</div>
-            <div class="media-card-title">First Experiments in Growing Organs Outside the Body in Armenia</div>
-            <div class="media-card-desc">Armenian national television (1tv.am) feature on pioneering tissue engineering work at the Orbeli Institute of Physiology, in which Arman participated during his research residency.</div>
-          </div>
-        </div>
-
-        <!-- YouTube 2 — Biology Olympiad medalist also paints -->
-        <div class="media-card fade-in">
-          <iframe src="https://www.youtube.com/embed/GQP8U6nU52k"
-            title="Biology Olympiad medalist — painter interview"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
-          <div class="media-card-body">
-            <div class="media-card-tag"><i class="fa-brands fa-youtube"></i> Interview · 2015</div>
-            <div class="media-card-title">The Biology Olympiad Medalist's Second Passion: Painting</div>
-            <div class="media-card-desc">A profile on Arman following his International Biology Olympiad bronze medal — exploring how his brushwork combines elements of expressionism and impressionism alongside his scientific pursuits.</div>
-          </div>
-        </div>
-
-        <!-- YouTube 3 — Short film festival -->
-        <div class="media-card fade-in">
-          <iframe src="https://www.youtube.com/embed/IoO5QA5BkSw"
-            title="Arman Simonyan — MEK KADR 16 Short Film Festival"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
-          <div class="media-card-body">
-            <div class="media-card-tag"><i class="fa-brands fa-youtube"></i> Film · MEK KADR Festival · 2018</div>
-            <div class="media-card-title">Մնացի ես (I Stayed) — 16th International Short Film Festival</div>
-            <div class="media-card-desc">Arman's short film screened at the MEK KADR (ONE FRAME) 16th International Short Film Festival Open Platform in June 2018 — a window into the creative dimension of a scientist.</div>
-          </div>
-        </div>
-
+        <div class="carousel-dots" id="c2dots"></div>
       </div>
+
+      <!-- ── SUBSECTION: Education & Outreach ── -->
+      <div class="engage-subsection fade-in">
+        <div class="subsection-label"><i class="fa-solid fa-earth-europe"></i> Education &amp; Outreach</div>
+        <div class="edu-grid">
+
+          <div class="khan-card">
+            <div class="khan-icon">🎓</div>
+            <div>
+              <div style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem">Khan Academy Armenian · 3 Years</div>
+              <div style="font-weight:600;font-size:.95rem;margin-bottom:.5rem">Mathematics, Science &amp; Art History Translation</div>
+              <div style="font-size:.82rem;color:var(--text-secondary);line-height:1.55">Contributed 3 years to the creation and translation of Khan Academy's <strong style="color:var(--text-primary)">Mathematics</strong>, <strong style="color:var(--text-primary)">Science</strong>, and <strong style="color:var(--text-primary)">Art History</strong> sections in Armenian — bringing free world-class education to Armenian-speaking students globally.</div>
+              <a class="media-card-link" style="margin-top:.75rem" href="https://hy.khanacademy.org" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Khan Academy in Armenian</a>
+            </div>
+          </div>
+
+          <div class="khan-card">
+            <div class="khan-icon" style="background:linear-gradient(135deg,#1a3a6e,#0f2d5e);box-shadow:0 4px 12px rgba(30,80,200,.3)">💻</div>
+            <div>
+              <div style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem">Hungry Lemon Panda · 6 Videos</div>
+              <div style="font-weight:600;font-size:.95rem;margin-bottom:.5rem">CS Education Channel in Armenian</div>
+              <div style="font-size:.82rem;color:var(--text-secondary);line-height:1.55">Created a series of computer science explainer videos in Armenian covering binary systems, variables, Boolean logic, recursion, and algorithms — making CS fundamentals accessible to Armenian-speaking learners.</div>
+              <a class="media-card-link" style="margin-top:.75rem" href="https://www.youtube.com/playlist?list=PLPzZl4HGv4AIZm6N_me8Cx80s41J26qhr" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i> Watch full playlist</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── SUBSECTION: Articles & Press ── -->
+      <div class="engage-subsection fade-in">
+        <div class="subsection-label"><i class="fa-solid fa-pen-nib"></i> Articles &amp; Press</div>
+        <ul class="article-list">
+          <li>
+            <i class="fa-solid fa-newspaper art-icon"></i>
+            <div class="art-body">
+              <div class="art-tag">Feature · MediaMax MathArt · 2019</div>
+              <div class="art-title"><a href="https://mediamax.am/en/specialprojects/mathart/35715/" target="_blank" rel="noopener">Arman Simonyan: Children should enjoy learning math</a></div>
+              <div class="art-desc">Interview in MediaMax's MathArt special project on science, mathematics, and creativity.</div>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-brain art-icon"></i>
+            <div class="art-body">
+              <div class="art-tag">Profile · Harvard Brain Science Initiative · 2019</div>
+              <div class="art-title"><a href="https://brain.harvard.edu/hbi_humans/arman-simonyan/" target="_blank" rel="noopener">HBI Humans: Arman Simonyan</a></div>
+              <div class="art-desc">"I am inspired by the void I can fill." Research profile from the Harvard Brain Science Initiative during his summer at Harvard Medical School.</div>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-award art-icon"></i>
+            <div class="art-body">
+              <div class="art-tag">Fellow Feature · DDSA · 2023</div>
+              <div class="art-title"><a href="https://ddsa.dk/member/arman-simonyan/" target="_blank" rel="noopener">Danish Data Science Academy — PhD Fellow Profile</a></div>
+              <div class="art-desc">Featured as a 2023 DDSA PhD Fellow for research in AI-powered drug discovery for G protein-coupled receptors.</div>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-building-columns art-icon"></i>
+            <div class="art-body">
+              <div class="art-tag">Institutional Profile · University of Copenhagen</div>
+              <div class="art-title"><a href="https://drug.ku.dk/staff/?pure=en/persons/693020" target="_blank" rel="noopener">KU Staff Page — Department of Drug Design and Pharmacology</a></div>
+              <div class="art-desc">Official institutional research profile at the University of Copenhagen.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </section>
 
@@ -1570,6 +1798,65 @@
       });
     }, { threshold: 0.35 });
     sections.forEach(s => secObserver.observe(s));
+
+    // ── Carousel factory ──
+    function initCarousel(trackId, prevId, nextId, dotsId) {
+      const track = document.getElementById(trackId);
+      const prev  = document.getElementById(prevId);
+      const next  = document.getElementById(nextId);
+      const dotsEl= document.getElementById(dotsId);
+      if (!track) return;
+
+      const cards = track.querySelectorAll('.media-card');
+      let idx = 0;
+
+      function visibleCount() {
+        const w = track.parentElement.offsetWidth;
+        if (w < 600) return 1;
+        if (w < 900) return 2;
+        return 3;
+      }
+
+      function maxIdx() { return Math.max(0, cards.length - visibleCount()); }
+
+      function cardWidth() {
+        const gap = 24;
+        return (track.parentElement.offsetWidth - gap * (visibleCount()-1)) / visibleCount();
+      }
+
+      function buildDots() {
+        dotsEl.innerHTML = '';
+        const pages = maxIdx() + 1;
+        for (let i = 0; i < pages; i++) {
+          const d = document.createElement('button');
+          d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+          d.addEventListener('click', () => goTo(i));
+          dotsEl.appendChild(d);
+        }
+      }
+
+      function goTo(i) {
+        idx = Math.max(0, Math.min(i, maxIdx()));
+        const gap = 24;
+        const cw  = cardWidth();
+        track.style.transform = `translateX(-${idx * (cw + gap)}px)`;
+        // set all card widths
+        cards.forEach(c => { c.style.flex = `0 0 ${cw}px`; c.style.minWidth = `${cw}px`; });
+        prev.disabled = idx === 0;
+        next.disabled = idx >= maxIdx();
+        dotsEl.querySelectorAll('.carousel-dot').forEach((d,j) => d.classList.toggle('active', j === idx));
+      }
+
+      prev.addEventListener('click', () => goTo(idx - 1));
+      next.addEventListener('click', () => goTo(idx + 1));
+
+      function init() { buildDots(); goTo(0); }
+      init();
+      window.addEventListener('resize', () => { buildDots(); goTo(Math.min(idx, maxIdx())); });
+    }
+
+    initCarousel('c1track','c1prev','c1next','c1dots');
+    initCarousel('c2track','c2prev','c2next','c2dots');
 
     const fadeItems = document.querySelectorAll('.fade-in');
     const fadeObserver = new IntersectionObserver(entries => {
