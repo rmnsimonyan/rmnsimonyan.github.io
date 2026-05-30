@@ -716,6 +716,72 @@
       line-height: 1.35;
     }
 
+    /* ───────────── MEDIA ───────────── */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.75rem;
+      margin-top: 1rem;
+    }
+
+    .media-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      backdrop-filter: blur(8px);
+    }
+
+    .media-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,191,165,.12);
+    }
+
+    .media-card video, .media-card iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: block;
+      background: #000;
+    }
+
+    .media-card-body {
+      padding: 1rem 1.25rem 1.25rem;
+    }
+
+    .media-card-tag {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: .4rem;
+    }
+
+    .media-card-title {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.4;
+      margin-bottom: .4rem;
+    }
+
+    .media-card-desc {
+      font-size: .82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .media-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      margin-top: .75rem;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--teal);
+    }
+
     /* ───────────── CONTACT ───────────── */
     #contact { text-align: center; }
 
@@ -810,6 +876,7 @@
       <li><a href="#experience">Experience</a></li>
       <li><a href="#publications">Publications</a></li>
       <li><a href="#awards">Awards</a></li>
+      <li><a href="#media">Media</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -896,17 +963,6 @@
             </a>
           </div>
 
-          <!-- DDSA Fellow Video -->
-          <div style="margin-top:2rem">
-            <p style="font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:.75rem">
-              <i class="fa-solid fa-video"></i>&nbsp; DDSA PhD Fellow Presentation
-            </p>
-            <video controls preload="none" poster=""
-              style="width:100%;max-width:520px;border-radius:var(--radius);border:1px solid var(--border);background:#000;display:block">
-              <source src="https://ddsa.dk/wp-content/uploads/2023/08/ddsa_phd_fellow_2023__arman_simonyan-1080p.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
         </div>
         <div class="fade-in">
           <div class="stat-grid">
@@ -1324,10 +1380,45 @@
     </div>
   </section>
 
+  <!-- ═══ MEDIA ═══ -->
+  <section id="media">
+    <div class="max-width">
+      <p class="section-label fade-in">06 / Media</p>
+      <h2 class="section-title fade-in">In the <span>Spotlight</span></h2>
+      <div class="section-divider fade-in"></div>
+      <div class="media-grid" id="mediaGrid">
+
+        <!-- DDSA LinkedIn video -->
+        <div class="media-card fade-in">
+          <video controls preload="none">
+            <source src="ddsa_arman_simonyan_2023.mp4" type="video/mp4">
+          </video>
+          <div class="media-card-body">
+            <div class="media-card-tag"><i class="fa-solid fa-video"></i> Video · 2023</div>
+            <div class="media-card-title">DDSA PhD Fellow Presentation — AI-Powered GPCR Drug Discovery</div>
+            <div class="media-card-desc">Featured by the Danish Data Science Academy as part of the 2023 PhD Fellow cohort. Presents my research on machine learning-driven peptide and drug design for G protein-coupled receptors.</div>
+            <a class="media-card-link" href="https://ddsa.dk/member/arman-simonyan/" target="_blank" rel="noopener">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> DDSA Fellow Profile
+            </a>
+          </div>
+        </div>
+
+        <!-- Placeholder card for more items coming -->
+        <div class="media-card fade-in" id="mediaPlaceholder" style="border-style:dashed;opacity:.55;display:flex;align-items:center;justify-content:center;min-height:220px">
+          <div style="text-align:center;padding:2rem;color:var(--text-muted)">
+            <i class="fa-solid fa-circle-plus" style="font-size:2rem;margin-bottom:.75rem;display:block;color:var(--teal);opacity:.5"></i>
+            <span style="font-size:.85rem">More media coming soon</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ CONTACT ═══ -->
   <section id="contact">
     <div class="contact-inner">
-      <p class="section-label fade-in" style="text-align:center">06 / Contact</p>
+      <p class="section-label fade-in" style="text-align:center">07 / Contact</p>
       <h2 class="section-title fade-in" style="text-align:center">Let's <span>Connect</span></h2>
       <div class="section-divider fade-in" style="margin:0 auto 3rem"></div>
       <p class="contact-lead fade-in">
