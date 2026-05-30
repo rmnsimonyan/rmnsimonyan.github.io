@@ -1,714 +1,1379 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arman Simonyan — Scientific Data Engineer &amp; Computational Drug Discovery</title>
+  <meta name="description" content="PhD candidate at University of Copenhagen working on AI-powered drug discovery for GPCRs. Scientific Data Engineer with expertise in bioinformatics, deep learning, and structural biology." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    /* ───────────── RESET & BASE ───────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <head>
+    :root {
+      --navy:        #0a1628;
+      --navy-mid:    #0f2040;
+      --navy-light:  #162b52;
+      --teal:        #00bfa5;
+      --teal-dim:    #00897b;
+      --teal-glow:   rgba(0,191,165,.15);
+      --slate:       #1e3a5f;
+      --text-primary:   #e8edf5;
+      --text-secondary: #a0b0c8;
+      --text-muted:     #5c7a9a;
+      --border:      rgba(0,191,165,.18);
+      --card-bg:     rgba(15,32,64,.7);
+      --nav-h:       68px;
+      --radius:      10px;
+      --transition:  .3s ease;
+      --font:        'Inter', system-ui, sans-serif;
+      --mono:        'JetBrains Mono', monospace;
+    }
 
-        <title>Arman Simonyan - Computational Biology</title>
+    html { scroll-behavior: smooth; font-size: 16px; }
 
-        <meta name="description" content="I am currently a senior student at American University of Armenia and a researcher in the Bioinformatics research group at the Institute of Molecular Biology NAS RA">
-        <meta name="keywords" content="Arman Simonyan, Arman, Simonyan, Computational Biology, Bioinformatics, Machine Learning, Computer Science, AUA, American University of Armenia, BIG, Bioinformatics Research Group, Institute of Molecular Biology, IMB, NAS, RA">
+    body {
+      font-family: var(--font);
+      background: var(--navy);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
+    ::selection { background: var(--teal); color: var(--navy); }
 
-        <!-- Google Font: Lato -->
-        <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    a { color: var(--teal); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: #4dd0c4; }
 
-        <!-- FontAwesome -->
-        <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
+    /* ───────────── SCROLLBAR ───────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--teal-dim); border-radius: 3px; }
 
-        <!-- Nivo Lightbox-->
-        <link rel="stylesheet" href="assets/plugins/nivo-lightbox/nivo-lightbox.css" />
-        <link rel="stylesheet" href="assets/plugins/nivo-lightbox/themes/default/default.css" />
+    /* ───────────── NAV ───────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 1000;
+      background: rgba(10,22,40,.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 clamp(1.5rem, 5vw, 3rem);
+      justify-content: space-between;
+      transition: box-shadow var(--transition);
+    }
 
-        <!-- Main CSS -->
-        <link rel="stylesheet" href="assets/css/main.css">
-        
-        <!-- Themes -->
-        <link rel="stylesheet" href="assets/css/themes.light.css">
-        <!--<link rel="stylesheet" href="assets/css/themes.light.css">-->
-        
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="assets/css/custom.css">
+    nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,.4); }
 
-        <!-- jQuery -->
-        <script src="assets/js/jquery.min.js"></script>
+    .nav-brand {
+      font-family: var(--mono);
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--teal);
+      letter-spacing: .02em;
+    }
 
-        <!-- dense.js (Retina plugin) -->
-        <script src="assets/js/dense.js"></script>
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
 
-        <!-- Nivo Lightbox -->
-        <script src="assets/plugins/nivo-lightbox/nivo-lightbox.min.js"></script>
+    .nav-links a {
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      transition: color var(--transition), border-color var(--transition);
+    }
 
-        <!-- ScrollReveal -->
-        <script src="assets/js/scrollreveal.min.js"></script>
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--teal);
+      border-bottom-color: var(--teal);
+    }
 
-        <!-- Main JS -->
-        <script src="assets/js/main.js"></script>
-		
-		<!-- Google Analytics -->
-		<script>
-			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--text-secondary);
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-			  ga('create', 'UA-104880210-1', 'auto');
-			  ga('send', 'pageview');
-		</script>
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        background: rgba(10,22,40,.98);
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border);
+        display: none;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; text-align: center; }
+      .nav-links a { display: block; padding: .75rem 1rem; border-bottom: none; }
+    }
 
-    </head>
+    /* ───────────── SECTIONS ───────────── */
+    section { padding: 6rem clamp(1.5rem, 8vw, 5rem); }
+    section:nth-child(odd)  { background: var(--navy); }
+    section:nth-child(even) { background: var(--navy-mid); }
 
-    <body>
+    .section-label {
+      font-family: var(--mono);
+      font-size: .78rem;
+      color: var(--teal);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: .6rem;
+    }
 
-        <div class="c-preloader  js-preloader">
-            <div class="c-preloader__spinner  t-preloader__spinner"></div>
+    .section-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+
+    .section-title span { color: var(--teal); }
+
+    .section-divider {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--teal), transparent);
+      border-radius: 2px;
+      margin-bottom: 3rem;
+    }
+
+    .max-width { max-width: 1100px; margin: 0 auto; }
+
+    /* ───────────── HERO ───────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: calc(var(--nav-h) + 2rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,191,165,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,191,165,.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      animation: gridDrift 20s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes gridDrift {
+      from { transform: translateY(0); }
+      to   { transform: translateY(48px); }
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: 20%; left: 55%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,191,165,.08) 0%, transparent 70%);
+      pointer-events: none;
+      animation: pulse 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { opacity: .6; transform: scale(1); }
+      to   { opacity: 1;  transform: scale(1.12); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+    }
+
+    .hero-greeting {
+      font-family: var(--mono);
+      font-size: .9rem;
+      color: var(--teal);
+      letter-spacing: .1em;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+
+    .hero-greeting::before {
+      content: '';
+      display: inline-block;
+      width: 32px; height: 1px;
+      background: var(--teal);
+    }
+
+    .hero-name {
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: .5rem;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: var(--text-secondary);
+      font-weight: 300;
+      margin-bottom: 1.4rem;
+      max-width: 560px;
+    }
+
+    .hero-tagline strong { color: var(--teal); font-weight: 500; }
+
+    .hero-location {
+      font-size: .85rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.6rem;
+      border-radius: var(--radius);
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: var(--navy);
+      border-color: var(--teal);
+    }
+    .btn-primary:hover {
+      background: #4dd0c4;
+      border-color: #4dd0c4;
+      color: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,191,165,.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--teal);
+      border-color: var(--teal);
+    }
+    .btn-outline:hover {
+      background: var(--teal-glow);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,191,165,.2);
+    }
+
+    .hero-socials {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+    }
+
+    .hero-socials a {
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 1rem;
+      transition: all var(--transition);
+    }
+    .hero-socials a:hover {
+      background: var(--teal-glow);
+      border-color: var(--teal);
+      color: var(--teal);
+      transform: translateY(-3px);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      color: var(--text-muted);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      animation: bounce 2.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ───────────── ABOUT ───────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      margin-bottom: 1.1rem;
+      font-size: 1.02rem;
+    }
+
+    .about-text p:first-child {
+      color: var(--text-primary);
+      font-size: 1.08rem;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      text-align: center;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .stat-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-3px);
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: .3rem;
+      font-family: var(--mono);
+    }
+
+    .stat-label {
+      font-size: .78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    /* ───────────── SKILLS ───────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-category {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .skill-category:hover {
+      border-color: var(--teal);
+      box-shadow: 0 0 24px rgba(0,191,165,.1);
+    }
+
+    .skill-category-title {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: .8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+
+    .skill-category-title i { font-size: .9rem; }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .chip {
+      background: rgba(0,191,165,.08);
+      border: 1px solid rgba(0,191,165,.2);
+      color: var(--text-secondary);
+      border-radius: 20px;
+      padding: .28rem .85rem;
+      font-size: .82rem;
+      font-family: var(--mono);
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .chip:hover {
+      background: rgba(0,191,165,.18);
+      border-color: var(--teal);
+      color: var(--teal);
+      transform: translateY(-1px);
+    }
+
+    /* ───────────── EXPERIENCE / TIMELINE ───────────── */
+    .timeline {
+      position: relative;
+      max-width: 860px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--teal), transparent);
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .timeline-dot {
+      width: 41px;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      padding-top: .15rem;
+    }
+
+    .timeline-dot-inner {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--teal);
+      border: 2px solid var(--navy);
+      box-shadow: 0 0 0 3px rgba(0,191,165,.25);
+      margin-top: .3rem;
+      flex-shrink: 0;
+    }
+
+    .timeline-content {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.8rem;
+      flex: 1;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .timeline-content:hover {
+      border-color: var(--teal);
+      transform: translateX(4px);
+    }
+
+    .timeline-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: .5rem;
+      margin-bottom: .5rem;
+    }
+
+    .timeline-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .timeline-period {
+      font-family: var(--mono);
+      font-size: .78rem;
+      color: var(--teal);
+      background: var(--teal-glow);
+      padding: .2rem .65rem;
+      border-radius: 20px;
+      border: 1px solid rgba(0,191,165,.3);
+      white-space: nowrap;
+    }
+
+    .timeline-org {
+      font-size: .9rem;
+      color: var(--teal-dim);
+      font-weight: 500;
+      margin-bottom: .7rem;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+
+    .timeline-body {
+      font-size: .9rem;
+      color: var(--text-secondary);
+    }
+
+    .timeline-body ul {
+      list-style: none;
+      margin-top: .4rem;
+    }
+    .timeline-body ul li {
+      padding-left: 1.2rem;
+      position: relative;
+      margin-bottom: .25rem;
+    }
+    .timeline-body ul li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    .timeline-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      font-size: .72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      padding: .15rem .6rem;
+      border-radius: 4px;
+      margin-bottom: .6rem;
+    }
+    .badge-phd    { background: rgba(124,77,255,.15);  color: #b39ddb; border: 1px solid rgba(124,77,255,.3); }
+    .badge-msc    { background: rgba(66,165,245,.12);  color: #90caf9; border: 1px solid rgba(66,165,245,.3); }
+    .badge-bsc    { background: rgba(102,187,106,.12); color: #a5d6a7; border: 1px solid rgba(102,187,106,.3); }
+    .badge-work   { background: rgba(0,191,165,.12);   color: #80cbc4; border: 1px solid rgba(0,191,165,.3); }
+    .badge-fellow { background: rgba(255,167,38,.12);  color: #ffcc80; border: 1px solid rgba(255,167,38,.3); }
+    .badge-res    { background: rgba(240,98,146,.12);  color: #f48fb1; border: 1px solid rgba(240,98,146,.3); }
+
+    @media (max-width: 600px) {
+      .timeline::before { left: 14px; }
+      .timeline-dot { width: 30px; }
+    }
+
+    /* ───────────── PUBLICATIONS ───────────── */
+    .pub-list { display: flex; flex-direction: column; gap: 1.2rem; max-width: 900px; }
+
+    .pub-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.8rem;
+      display: flex;
+      gap: 1.4rem;
+      align-items: flex-start;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .pub-card:hover {
+      border-color: var(--teal);
+      transform: translateX(4px);
+    }
+
+    .pub-num {
+      font-family: var(--mono);
+      font-size: .85rem;
+      color: var(--teal);
+      font-weight: 700;
+      min-width: 26px;
+      margin-top: .15rem;
+      opacity: .7;
+    }
+
+    .pub-title {
+      font-size: .97rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: .3rem;
+    }
+
+    .pub-meta {
+      font-size: .83rem;
+      color: var(--text-secondary);
+    }
+
+    .pub-journal {
+      font-style: italic;
+      color: var(--teal-dim);
+    }
+
+    .pub-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      font-size: .7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      padding: .15rem .55rem;
+      border-radius: 4px;
+      margin-left: .5rem;
+      vertical-align: middle;
+      background: rgba(255,167,38,.12);
+      color: #ffcc80;
+      border: 1px solid rgba(255,167,38,.3);
+    }
+
+    /* ───────────── AWARDS ───────────── */
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+      max-width: 1000px;
+    }
+
+    .award-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .award-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-3px);
+    }
+
+    .award-icon {
+      width: 38px; height: 38px;
+      background: var(--teal-glow);
+      border: 1px solid rgba(0,191,165,.3);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--teal);
+      font-size: .95rem;
+      flex-shrink: 0;
+    }
+
+    .award-year {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--teal);
+      letter-spacing: .05em;
+      margin-bottom: .2rem;
+    }
+
+    .award-title {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.35;
+    }
+
+    /* ───────────── CONTACT ───────────── */
+    #contact { text-align: center; }
+
+    .contact-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-lead {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .7rem 1.4rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text-secondary);
+      font-size: .9rem;
+      transition: all var(--transition);
+    }
+    .contact-link i { color: var(--teal); font-size: 1rem; }
+    .contact-link:hover {
+      border-color: var(--teal);
+      background: var(--teal-glow);
+      color: var(--teal);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,191,165,.15);
+    }
+
+    /* ───────────── FOOTER ───────────── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2rem;
+      font-size: .8rem;
+      color: var(--text-muted);
+      font-family: var(--mono);
+    }
+
+    footer span { color: var(--teal); }
+
+    /* ───────────── FADE-IN ANIMATION ───────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ───────────── UTILITIES ───────────── */
+    .scholar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      font-size: .82rem;
+      color: var(--text-muted);
+      margin-top: .6rem;
+      transition: color var(--transition);
+    }
+    .scholar-link:hover { color: var(--teal); }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVIGATION ═══ -->
+  <nav id="navbar">
+    <div class="nav-brand">arman.simonyan<span style="color:var(--text-muted)">@ucph</span></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero">
+    <div class="hero-content fade-in">
+      <p class="hero-greeting">Hello, I'm</p>
+      <h1 class="hero-name">Arman<br>Simonyan</h1>
+      <p class="hero-tagline">
+        <strong>Scientific Data Engineer</strong> &amp; Computational Drug Discovery Researcher
+      </p>
+      <p class="hero-location">
+        <i class="fa-solid fa-location-dot" style="color:var(--teal)"></i>
+        Copenhagen, Denmark
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">
+          <i class="fa-solid fa-envelope"></i> Get in Touch
+        </a>
+        <a href="#experience" class="btn btn-outline">
+          <i class="fa-solid fa-timeline"></i> View CV
+        </a>
+      </div>
+      <div class="hero-socials">
+        <a href="mailto:rmnsimonyan@gmail.com" title="Email" aria-label="Email">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+        <a href="https://github.com/rmnsimonyan" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://scholar.google.com/citations?hl=en&user=w0gAP7IAAAAJ" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/rmnsimonyan" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true">
+      <i class="fa-solid fa-chevron-down"></i>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about">
+    <div class="max-width">
+      <p class="section-label fade-in">01 / About</p>
+      <h2 class="section-title fade-in">Who I <span>Am</span></h2>
+      <div class="section-divider fade-in"></div>
+      <div class="about-grid">
+        <div class="about-text fade-in">
+          <p>
+            I am a PhD candidate at the University of Copenhagen (Gloriam Group, Department of Drug Design and Pharmacology) developing AI-powered drug discovery approaches for G protein-coupled receptors — one of the largest and most pharmacologically relevant protein families.
+          </p>
+          <p>
+            My work spans protein and peptide engineering using RFdiffusion, AlphaFold2/3-based co-design, and protein language models, combined with large-scale cloud data pipelines on AWS. I bring a deep multi-omics background from earlier work in genomics, transcriptomics, and pharmacogenomics at Rigshospitalet and Harvard Medical School.
+          </p>
+          <p>
+            As a Danish Data Science Academy Fellow, I have 7+ years of end-to-end experience bridging biological insight and scalable engineering — from raw sequencing data to deployable bioinformatics infrastructure.
+          </p>
+          <a class="scholar-link" href="https://scholar.google.com/citations?hl=en&user=w0gAP7IAAAAJ" target="_blank" rel="noopener">
+            <i class="fa-solid fa-graduation-cap"></i>
+            View publications on Google Scholar
+          </a>
+        </div>
+        <div class="fade-in">
+          <div class="stat-grid">
+            <div class="stat-card">
+              <div class="stat-number">7+</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">6</div>
+              <div class="stat-label">h-index</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">6</div>
+              <div class="stat-label">Publications</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">9</div>
+              <div class="stat-label">Awards &amp; Honours</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SKILLS ═══ -->
+  <section id="skills">
+    <div class="max-width">
+      <p class="section-label fade-in">02 / Skills</p>
+      <h2 class="section-title fade-in">Technical <span>Expertise</span></h2>
+      <div class="section-divider fade-in"></div>
+      <div class="skills-grid">
+
+        <div class="skill-category fade-in">
+          <div class="skill-category-title">
+            <i class="fa-solid fa-code"></i> Programming
+          </div>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">R</span>
+            <span class="chip">Bash</span>
+            <span class="chip">Java</span>
+            <span class="chip">C++</span>
+          </div>
         </div>
 
-        <div class="c-main-container  js-main-container">
-
-            <!-- ################################ -->
-            <!-- ############ HEADER ############ -->
-            <!-- ################################ -->
-            
-            <section class="o-section o-section--header  t-section  t-section--header">
-                <div class="c-header">
-
-                    <div class="o-section__header-bg  t-section__header"></div>
-                    <div class="o-section__content-bg  t-section__content"></div>
-
-                    <div class="o-container">
-                        <div class="o-section__container">
-
-                            <header class="o-section__header  c-header__header  t-section__header">
-                                <div class="c-header__inner-header">
-
-                                    <div class="c-header__avatar">
-                                        <div class="a-header  c-avatar">
-                                            <img class="c-avatar__img" src="assets/images/header/avatar.png" alt="">
-                                        </div><!-- /c-avatar -->
-                                    </div><!-- /c-header-avatar -->
-
-                                </div><!-- /c-header__inner-header -->
-                            </header><!-- /o-section__header -->
-
-                            <div class="o-section__content  c-header__content  t-section__content">
-                                <div class="c-header__inner-content">
-
-                                    <div class="c-header__top">
-
-                                        <div class="c-header__brand">
-
-                                            <div class="c-brand">
-                                                <h1 class="c-brand__title  t-title">
-                                                    <span class="c-brand__sizer">
-                                                        <span class="a-header  c-brand__first-word  t-title__first-word">
-                                                            Arman
-                                                        </span>
-                                                        <span class="a-header  c-brand__second-word  t-title__second-word">
-                                                            Simonyan
-                                                        </span>
-                                                    </span>
-                                                </h1>
-                                                <h2 class="a-header  c-brand__sub-title  t-sub-title">
-                                                    <span class="c-brand__sizer">
-                                                        Computer Science/ Computational Biology
-                                                    </span>
-                                                </h2>
-                                            </div><!-- /c-brand -->
-
-                                        </div><!-- /c-header__brand -->
-
-                                        <ul class="c-header__social-buttons  c-social-buttons">
-											<li class="a-header">
-                                                <a href="https://www.linkedin.com/in/arman-simonian-a7b76711b/" target="_blank" class="c-social-button  t-social-button">
-                                                    <i class="fa fa-lg fa-linkedin"></i>
-                                                </a>
-                                            </li>
-											<li class="a-header">
-                                                <a href="https://github.com/rmnsimonyan" target="_blank" class="c-social-button  t-social-button">
-                                                    <i class="fa fa-lg fa-github"></i>
-                                                </a>
-                                            </li>
-											<li class="a-header">
-                                                <a href="https://www.facebook.com/arman.simonian.5" target="_blank" class="c-social-button  t-social-button">
-                                                    <i class="fa fa-lg fa-facebook-square"></i>
-                                                </a>
-                                            </li>
-											<li class="a-header">
-                                                <a href="https://twitter.com/rmnsimonyan" target="_blank" class="c-social-button  t-social-button">
-                                                    <i class="fa fa-lg fa-twitter"></i>
-                                                </a>
-                                            </li>
-										</ul><!-- /c-header__social-buttons -->
-
-                                    </div><!-- /c-header__top -->
-
-                                    <div class="c-header__contact">
-
-                                        <hr class="a-header  c-header__contact-divider" />
-
-                                        <div class="o-grid">
-
-                                            <div class="o-grid__col-md-4  o-grid__col-sm-12">
-                                                <div class="a-header  o-content">
-                                                    <div class="o-content__body">
-                                                        <h4>Location</h4>
-                                                        <address>
-                                                            Copenhagen, Denmark
-                                                        </address>
-                                                    </div>
-                                                </div><!-- /o-content -->
-                                            </div><!-- /o-grid__col -->
-
-                                            <div class="o-grid__col-md-4  o-grid__col-sm-12">
-                                                <div class="a-header  o-content">
-                                                    <div class="o-content__body">
-                                                        <h4>Phone</h4>
-                                                        <p>
-                                                            +45 715 00508
-                                                        </p>
-                                                    </div>
-                                                </div><!-- /o-content -->
-                                            </div><!-- /o-grid__col -->
-
-                                            <div class="o-grid__col-md-4  o-grid__col-sm-12">
-                                                <div class="a-header  o-content">
-                                                    <div class="o-content__body">
-                                                        <a href="mailto: rmnsimonyan@gmail.com" class="t-link-container">
-                                                            <h4>Email</h4>
-                                                            <p>
-                                                                <span class="t-link-container__item--blended">
-                                                                    rmnsimonyan@gmail.com
-                                                                </span>
-                                                            </p>
-                                                        </a><!-- /o-link-container -->
-                                                    </div>
-                                                </div><!-- /o-content -->
-                                            </div><!-- /o-grid__col -->
-
-                                        </div><!-- /o-grid -->
-                                    </div><!-- /c-header__contact -->
-
-                                </div><!-- /c-header__inner-content -->
-                            </div><!-- /o-section__content -->
-
-                        </div><!-- /o-section__container -->
-
-                    </div><!-- /o-container -->
-
-                </div><!-- /c-header -->
-            </section><!-- /o-section -->
-
-
-
-            <!-- ################################ -->
-            <!-- ############ INTRO ############# -->
-            <!-- ################################ -->
-            
-            <section class="o-section  t-section  ">
-
-                <div class="o-section__header-bg  t-section__header"></div>
-                <div class="o-section__content-bg  t-section__content"></div>
-
-                <div class="o-container">
-                    <div class="o-section__container">
-
-                        <header class="o-section__header  t-section__header">
-                            <div class="o-content">
-                                <h2 class="o-section__heading">
-                                    Intro
-                                </h2>
-                            </div>
-                        </header><!-- /o-section__header -->
-
-                        <div class="o-section__content  t-section__content  ">
-                            
-                            <div class="o-content">
-                                <div class="c-intro">
-                                    <div class="o-content__body">
-                                        <p>
-					Hi, I’m Arman Simonyan aka @rmnsimonyan
-					👀 I’m interested in developing mathematical models for describing complex biological systems and studying molecular mechanisms in multifactorial disorders.
-					🌱 I have an expertise in scRNA-seq and other multimodel genomic data analysis, signaling pathway analysis, drug repurposing, peptide design.
-					🧑‍💻 I am currently working at the Department of Drug Design and Pharmacology at the University of Copenhagen.
-					🧑‍🔬 I hold an MS in Bioinformatics from the University of Copenhagen. I Previously worked at the Department of Genomic Medicine in Rigshospitalet, Harvard Medical School, and Armenian Bioinformatics Institute.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div><!-- /o-section__content -->
-
-                    </div><!-- /o-section__container -->
-                </div><!-- /o-container -->
-
-            </section><!-- /o-section -->
-			
-            <!-- ################################ -->
-            <!-- ############ AWARDS ############ -->
-            <!-- ################################ -->
-            
-            <section class="o-section  t-section  ">
-
-                <div class="o-section__header-bg  t-section__header"></div>
-                <div class="o-section__content-bg  t-section__content"></div>
-
-                <div class="o-container">
-                    <div class="o-section__container">
-
-                        <header class="o-section__header  t-section__header">
-                            <div class="o-content">
-                                <h2 class="o-section__heading">
-                                    Notable Awards
-                                </h2>
-                                <div class="o-content__body  o-section__description">
-                                    
-                                </div>
-                            </div>
-                        </header><!-- /o-section__header -->
-
-                        <div class="o-section__content  t-section__content  ">
-                            
-                            <div class="o-grid">
-
-                            
-                                <div class="o-grid__col-sm-6">
-                                    <div class="o-content">
-                                        <hr class="c-deco-line  t-primary-color-line" />
-                                        <div class="o-content__body">
-                                            <h3>RA State Educational Award, 2016 & 2019</h3>
-                                            <p>
-                                                The most prestidious recognition in academic excellence. Ranked among the top 7 high school (2016) and top 15 undergraduate (2019) students in the country.
-                                            </p>
-                                        </div>
-                                    </div><!-- /o-content -->
-                                </div><!-- /o-grid__col -->
-                                
-                                <div class="o-grid__col-sm-6">
-                                    <div class="o-content">
-                                        <hr class="c-deco-line  t-primary-color-line" />
-                                        <div class="o-content__body">
-                                            <h3>AUA Academic Excellence Scholarship (Armenia), 2016-2020</h3>
-                                            <p>
-                                                    A full scholarship from American Univeristy of Armenia awarded to top 10% of the undergraduate students.
-                                            </p>
-                                        </div>
-                                    </div><!-- /o-content -->
-                                </div><!-- /o-grid__col -->
-
-                                <div class="o-grid__col-sm-6">
-                                    <div class="o-content">
-                                        <hr class="c-deco-line  t-primary-color-line" />
-                                        <div class="o-content__body">
-                                            <h3>Two Bronze Medals in International Biology Olympiad, 2014 (Indonesia) & 2015 (Denmark)</h3>
-                                            <p>
-                                                Represented Armenia at the 25th and 26th International Biology Olympiads (IBO) in Bali and Aarhus and won Bronze medal twice.
-                                            </p>
-                                        </div>
-                                    </div><!-- /o-content -->
-                                </div><!-- /o-grid__col -->
-								
-                                <div class="o-grid__col-sm-6">
-                                    <div class="o-content">
-                                        <hr class="c-deco-line  t-primary-color-line" />
-                                        <div class="o-content__body">
-                                            <h3>Danish Governmental Scholarship for Non-EU students (Denmark), 2020-2022</h3>
-                                            <p>
-                                                A full acamdic scholarship to complete Master studies at the Univerisity of Copenhagen awarded by Danish government for demonstrating outstanding academic achievements.
-                                            </p>
-                                        </div>
-                                    </div><!-- /o-content -->
-                                </div><!-- /o-grid__col -->
-
-                                <div class="o-grid__col-sm-6">
-                                    <div class="o-content">
-                                        <hr class="c-deco-line  t-primary-color-line" />
-                                        <div class="o-content__body">
-                                            <h3>AGBU Summer Research Scholarship (USA), 2009</h3>
-                                            <p>
-                                                A full research fellowship awarded by AGBU for strong academic potential and leadership qualities to conduct an independent research project at Harvard Medical School.
-                                            </p>
-                                        </div>
-                                    </div><!-- /o-content -->
-                                </div><!-- /o-grid__col -->
-
-                                <div class="o-grid__col-sm-6">
-                                    <div class="o-content">
-                                        <hr class="c-deco-line  t-primary-color-line" />
-                                        <div class="o-content__body">
-                                            <h3>Best Poster Presentation in RSU international conference (Latvia), 2020</h3>
-                                            <p>
-                                                Best Poster Presentation in International Student Conference 2020 of Riga in “Health and Social Sciences” Session.
-                                            </p>
-                                        </div>
-                                    </div><!-- /o-content -->
-                                </div><!-- /o-grid__col -->
-
-                            </div><!-- /o-grid -->
-
-                        </div><!-- /o-section__content -->
-
-                    </div><!-- /o-section__container -->
-                </div><!-- /o-container -->
-
-            </section><!-- /o-section -->			
-			
-			
-            <!-- ##################################### -->
-            <!-- ###### PUBLICATIONS AND TALKS ####### -->
-            <!-- ##################################### -->
-            
-            <section class="o-section  t-section  ">
-
-                <div class="o-section__header-bg  t-section__header"></div>
-                <div class="o-section__content-bg  t-section__content"></div>
-
-                <div class="o-container">
-                    <div class="o-section__container">
-
-                        <header class="o-section__header  t-section__header">
-                            <div class="o-content">
-                                <h2 class="o-section__heading">
-                                    Selected Publications
-                                </h2>
-                                <div class="o-content__body  o-section__description">
-                                    
-                                </div>
-                            </div>
-                        </header><!-- /o-section__header -->
-
-                        <div class="o-section__content  t-section__content  ">
-                            
-                            <div class="o-content">
-                                <div class="o-content__body">
-                                    <ol class="c-publications-and-talks t-primary-color">
-                                        <li><span class="t-text-color"> <b>Telomere maintenance pathway activity analysis enables tissue- and gene-level inferences.</b> 
-						<br />Nersisyan, L., <u>Simonyan, A.</u>,, Binder, H., Arakelyan, A. <br />
-						<a href="https://www.frontiersin.org/articles/10.3389/fgene.2021.662464/full" target="_blank">Front. Genet. 12:662464. doi:10.3389/fgene.2021.662464. (2021)</a></span></li>
-                                        <li><span class="t-text-color"><b>Transcriptome Patterns of BRCA1- and BRCA2- Mutated Breast and Ovarian Cancers.</b><br />
-                                        Arakelyan, A., Melkonyan, A., Hakobyan, S., Boyarskih, U., <u>Simonyan, A.</u>, Nersisyan, L., Nikoghosyan, M., Filipenko, M., Binder, H.<br /> 
-                                        <a href="https://www.mdpi.com/1422-0067/22/3/1266" target="_blank">Int. J. Mol. Sci., 22(3), 1266. doi:10.3390/ijms22031266. (2021)</a></span></li>
-										<li><span class="t-text-color"><b>Quantitative Trait Locus Analysis in Spasmodic Dysphonia.</b><br />
-										<u>Simonyan, A.</u><br /> 
-										<a href="https://https://rau.am/en" target="_blank">In: Darbinyan A. (eds), Proceedings of the XIV Annual International Conference of Russian-Armenian University (pp. 206-210). (2020)</a></span></li>
-										<li><span class="t-text-color"><b>Transcriptome-guided drug repositioning.</b><br />
-										Arakelyan, A., Nersisyan, L., Nikoghosyan, M., Hakobyan,<u> S., Simonyan</u>, A., Hopp, L., Loffler- Wirth, H., Binder, H.<br /> 
-										<a href="https://www.mdpi.com/1999-4923/11/12/677" target="_blank">Pharmaceutics, 11(12), 677. doi:10.3390/pharmaceutics11120677. (2019)</a></span></li>
-									</ol>
-                                    See <a href="https://scholar.google.com/citations?user=w0gAP7IAAAAJ&hl=en&oi=ao" target="_blank">google scholar</a> for the full list.
-                                </div>
-                            </div>
-
-                        </div><!-- /o-section__content -->
-
-                    </div><!-- /o-section__container -->
-                </div><!-- /o-container -->
-
-            </section><!-- /o-section -->
-
-            <!-- ################################ -->
-            <!-- ############ SOCIAL ############ -->
-            <!-- ################################ -->
-            
-            <section class="o-section  t-section  ">
-
-                <div class="o-section__header-bg  t-section__header"></div>
-                <div class="o-section__content-bg  t-section__content"></div>
-
-                <div class="o-container">
-                    <div class="o-section__container">
-
-                        <header class="o-section__header  t-section__header">
-                            <div class="o-content">
-                                <h2 class="o-section__heading">
-                                    Community
-                                </h2>
-                                <div class="o-content__body  o-section__description">
-                                    
-                                </div>
-                            </div>
-                        </header><!-- /o-section__header -->
-
-                        <div class="o-section__content  t-section__content  ">
-                            
-                            <div class="o-grid">
-
-                                <div class="o-grid__col-sm-12">
-                                    <div class="o-content">
-                                        <hr class="c-deco-line  t-primary-color-line" />
-                                        <div class="o-content__body">
-                                            <h3>FAST NextGen Council, 2018 - present</h3>
-                                            <p>
-                                                <a href="https://fast.foundation/#/community" target="_blank">NextGen Council</a> brings together the talent, knowledge, and skills of young and motivated scientists, 
-                                                technologists and tech entrepreneurs from every corner of the world to provide a boost to scientific 
-                                                endeavors, technological developments, and entrepreneurship activities in Armenia and beyond.
-                                           </p>
-                                        </div>
-                                    </div><!-- /o-content -->
-                                </div><!-- /o-grid__col -->
-                                                                <div class="o-grid__col-sm-12">
-                                    <div class="o-content">
-                                        <hr class="c-deco-line  t-primary-color-line" />
-                                        <div class="o-content__body">
-                                            <h3>Churchill College Association, 2016 - present</h3>
-                                            <p>
-                                                As a 2010 - 2020 decade representative for the <a href="https://www.chu.cam.ac.uk/alumni/association/" target="_blank">association</a>, I try to stay in touch with my college by organising events for the alumni.
-                                            </p>
-                                        </div>
-                                    </div><!-- /o-content -->
-                                </div><!-- /o-grid__col -->
-
-                                <div class="o-grid__col-sm-12">
-                                    <div class="o-content">
-                                        <hr class="c-deco-line  t-primary-color-line" />
-                                        <div class="o-content__body">
-                                            <h3>Develop Armenia Program, Summers 2010 - 2016 </h3>
-                                            <p>
-                                                As a <a href="http://www.luys.am/en/students/profile/vahe-tshitoyan" target="_blank">Luys scholar</a>, I went to Armenia almost every summer from 2010 to 2016 to participate in a community service
-												program organised by Luys foundation. We went to various regions of Armenia in teams of 10 - 20
-												students, with the aim to make positive impact in the communities
-												in a short period of time. Activities have ranged from teaching at local schools and helping
-												local businesses, all the way to refurbishing a football pitch or making street signs.
-                                            </p>
-                                        </div>
-                                    </div><!-- /o-content -->
-                                </div><!-- /o-grid__col -->
-								
-                            </div><!-- /o-grid -->
-
-                        </div><!-- /o-section__content -->
-
-                    </div><!-- /o-section__container -->
-                </div><!-- /o-container -->
-
-            </section><!-- /o-section -->			
-
-            <!-- ############################ -->
-            <!-- ########### MEDIA ########## -->
-            <!-- ############################ -->
-            
-            <section class="o-section  t-section  ">
-
-                <div class="o-section__header-bg  t-section__header"></div>
-                <div class="o-section__content-bg  t-section__content"></div>
-
-                <div class="o-container">
-                    <div class="o-section__container">
-
-                        <header class="o-section__header  t-section__header">
-                            <div class="o-content">
-                                <h2 class="o-section__heading">
-                                    Media
-                                </h2>
-                                <div class="o-content__body  o-section__description">
-                                </div>
-                            </div>
-                        </header><!-- /o-section__header -->
-
-                        <div class="o-section__content  t-section__content  o-section__full-bottom-space">
-                            
-                            <div class="o-grid  o-grid--gallery">
-
-                                <div class="o-grid__col-sm-6">
-                                    <a class="c-image-overlay  t-image-overlay  js-lightbox" href="assets/images/portfolio/1_full.jpg" data-lightbox-hidpi="" title="Prince Charles himself came to congratulate the recipients of Cambridge International Scholarship." data-lightbox-gallery="portfolio">
-                                        <img src="assets/images/portfolio/1_thumb.jpg" alt="">
-                                        <div class="c-image-overlay__content">
-                                            <h3>
-                                                Harvard Brain Initiative
-                                            </h3>
-                                            <hr class="c-image-overlay__deco-line  t-image-overlay__deco-line" />
-                                            <p>
-                                                Interview to Harvard Brain Initiative digital newspaper series during my visit in Boston.
-                                            </p>
-                                        </div>
-                                    </a>
-                                </div><!-- /o-grid__col -->
-
-                                <div class="o-grid__col-sm-6">
-                                    <a class="c-image-overlay  t-image-overlay  js-lightbox" href="assets/images/portfolio/2_full.jpg" data-lightbox-hidpi="" title="Our research was featured on the cover of Nature Physics." data-lightbox-gallery="portfolio">
-                                        <img src="assets/images/portfolio/2_thumb.jpg" alt="">
-                                        <div class="c-image-overlay__content">
-                                            <h3>
-                                                Khan Academy and Math
-                                            </h3>
-                                            <hr class="c-image-overlay__deco-line  t-image-overlay__deco-line" />
-                                            <p>
-                                                Interview to ... talking about importance of math and prospects of E-education through online interactive platforms.
-                                            </p>
-                                        </div>
-                                    </a>
-                                </div><!-- /o-grid__col -->
-								
-								<div class="o-grid__col-sm-6">
-                                    <a class="c-image-overlay  t-image-overlay  js-lightbox" href="assets/images/portfolio/5_full.jpg" data-lightbox-hidpi="" title="I've played basketball competitively since I was 8." data-lightbox-gallery="portfolio">
-                                        <img src="assets/images/portfolio/5_thumb.jpg" alt="">
-                                        <div class="c-image-overlay__content">
-                                            <h3>
-                                                Basketball
-                                            </h3>
-                                            <hr class="c-image-overlay__deco-line  t-image-overlay__deco-line" />
-                                            <p>
-                                                Played for Yerevan State University in my undergraduate. Won the university championship as the captain of the physics department team. Also captained Churchill College Basketball Club for a year.
-                                            </p>
-                                        </div>
-                                    </a>
-                                </div><!-- /o-grid__col -->
-
-                                <div class="o-grid__col-sm-6">
-                                    <a class="c-image-overlay  t-image-overlay  js-lightbox" href="assets/images/portfolio/6_full.jpg" data-lightbox-hidpi="" title="Rowing is one of the best sports for character building and teamwork. That's me at the front!" data-lightbox-gallery="portfolio">
-                                        <img src="assets/images/portfolio/6_thumb.jpg" alt="">
-                                        <div class="c-image-overlay__content">
-                                            <h3>
-                                                Rowing
-                                            </h3>
-                                            <hr class="c-image-overlay__deco-line  t-image-overlay__deco-line" />
-                                            <p>
-                                                I picked this up when I first went to Cambridge and quickly became addicted. Won 2 trophies and captained Churchill College's 2nd boat in 2014 - 2015.
-                                            </p>
-                                        </div>
-                                    </a>
-                                </div><!-- /o-grid__col -->
-
-                            </div><!-- /o-grid -->
-
-                        </div><!-- /o-section__content -->
-
-                    </div><!-- /o-section__container -->
-                </div><!-- /o-container -->
-
-            </section><!-- /o-section -->
-
-            <!-- ################################ -->
-            <!-- ############ FOOTER ############ -->
-            <!-- ################################ -->
-            
-            <section class="o-section  t-section  o-section--footer">
-
-                <div class="o-section__header-bg  t-section__header"></div>
-                <div class="o-section__content-bg  t-section__content"></div>
-
-                <div class="o-container">
-                    <div class="o-section__container">
-
-                        <header class="o-section__header  t-section__header">
-                            <div class="o-content">
-                                <h2 class="o-section__heading">
-                                    Contact
-                                </h2>
-                                <div class="o-content__body  o-section__description">
-                                    Call me, maybe.
-                                </div>
-                            </div>
-                        </header><!-- /o-section__header -->
-
-                        <div class="o-section__content  t-section__content  ">
-                            
-                                <div class="c-footer__contact">
-                                    <div class="o-grid">
-
-                                    <div class="o-grid__col-md-4  o-grid__col-sm-12">
-                                        <div class="o-content">
-                                            <div class="o-content__body">
-                                                <h4>Location</h4>
-                                                <address>
-                                                    Mountain View, CA
-                                                </address>
-                                            </div>
-                                        </div><!-- /o-content -->
-                                    </div><!-- /o-grid__col -->
-
-                                    <div class="o-grid__col-md-4  o-grid__col-sm-12">
-                                        <div class="o-content">
-                                            <div class="o-content__body">
-                                                <h4>Phone</h4>
-                                                <p>
-                                                    +1 510 708 0395
-                                                </p>
-                                            </div>
-                                        </div><!-- /o-content -->
-                                    </div><!-- /o-grid__col -->
-
-                                    <div class="o-grid__col-md-4  o-grid__col-sm-12">
-                                        <div class="o-content">
-                                            <div class="o-content__body">
-                                                <a href="mailto:vahe.tshitoyan@gmail.com" class="t-link-container">
-                                                    <h4>Email</h4>
-                                                    <p>
-                                                        <span class="t-link-container__item--blended">
-                                                            vahe.tshitoyan@gmail.com
-                                                        </span>
-                                                    </p>
-                                                </a><!-- /o-link-container -->
-                                            </div>
-                                        </div><!-- /o-content -->
-                                    </div><!-- /o-grid__col -->
-
-                                </div><!-- /o-grid -->
-                                </div><!-- /c-footer__contact -->
-
-                                <hr class="c-footer__contact-divider" />
-
-                                <div class="o-content">
-                                    <div class="c-footer__bottom">
-                                        <div class="c-footer__brand">
-
-                                            <div class="c-brand">
-                                                <div class="o-content__body">
-                                                    <h1 class="c-brand__title  t-title">
-                                                        <span class="c-brand__sizer  c-brand__sizer--sm">
-                                                            <span class="a-footer  c-brand__first-word  t-title__first-word">
-                                                                Arman
-                                                            </span>
-                                                            <span class="a-footer  c-brand__second-word  t-title__second-word">
-                                                                Simonyan
-                                                            </span>
-                                                        </span>
-                                                    </h1>
-                                                </div><!-- /o-content__body -->
-                                            </div><!-- /c-brand -->
-
-                                        </div><!-- /c-footer__brand -->
-
-                                        <ul class="c-header__social-buttons  c-social-buttons">
-                                            <li class="a-header">
-                                                <a href="https://www.linkedin.com/in/arman-simonian-a7b76711b/" target="_blank" class="c-social-button  t-social-button">
-                                                    <i class="fa fa-lg fa-linkedin"></i>
-                                                </a>
-                                            </li>
-                                            <li class="a-header">
-                                                <a href="https://github.com/rmnsimonyan" target="_blank" class="c-social-button  t-social-button">
-                                                    <i class="fa fa-lg fa-github"></i>
-                                                </a>
-                                            </li>
-                                            <li class="a-header">
-                                                <a href="https://www.facebook.com/arman.simonian.5" target="_blank" class="c-social-button  t-social-button">
-                                                    <i class="fa fa-lg fa-facebook-square"></i>
-                                                </a>
-                                            </li>
-                                            <li class="a-header">
-                                                <a href="https://twitter.com/rmnsimonyan" target="_blank" class="c-social-button  t-social-button">
-                                                    <i class="fa fa-lg fa-twitter"></i>
-                                                </a>
-                                            </li>
-										</ul><!-- /c-footer__social-buttons -->
-
-                                    </div><!-- /c-footer__bottom -->
-                                </div><!-- /o-content -->
-
-                        </div><!-- /o-section__content -->
-
-                    </div><!-- /o-section__container -->
-                </div><!-- /o-container -->
-
-            </section><!-- /o-section -->
-
-
-
-        </div><!-- /c-main-container -->
-
-    </body>
-
+        <div class="skill-category fade-in">
+          <div class="skill-category-title">
+            <i class="fa-brands fa-aws"></i> Cloud &amp; DevOps
+          </div>
+          <div class="chips">
+            <span class="chip">AWS S3</span>
+            <span class="chip">AWS EC2</span>
+            <span class="chip">AWS CDK</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Nextflow</span>
+            <span class="chip">Snakemake</span>
+            <span class="chip">Git</span>
+            <span class="chip">HPC</span>
+          </div>
+        </div>
+
+        <div class="skill-category fade-in">
+          <div class="skill-category-title">
+            <i class="fa-solid fa-brain"></i> AI / ML
+          </div>
+          <div class="chips">
+            <span class="chip">Graph Neural Networks</span>
+            <span class="chip">Attention / Transformers</span>
+            <span class="chip">VAEs</span>
+            <span class="chip">Protein LMs</span>
+            <span class="chip">RFdiffusion</span>
+            <span class="chip">AlphaFold2/3</span>
+            <span class="chip">ProteinMPNN</span>
+          </div>
+        </div>
+
+        <div class="skill-category fade-in">
+          <div class="skill-category-title">
+            <i class="fa-solid fa-dna"></i> Bioinformatics
+          </div>
+          <div class="chips">
+            <span class="chip">RNA-seq</span>
+            <span class="chip">scRNA-seq</span>
+            <span class="chip">Spatial Transcriptomics</span>
+            <span class="chip">WES / WGS</span>
+            <span class="chip">GWAS</span>
+            <span class="chip">Variant Calling</span>
+            <span class="chip">MSA</span>
+            <span class="chip">Molecular Dynamics</span>
+            <span class="chip">Docking</span>
+          </div>
+        </div>
+
+        <div class="skill-category fade-in">
+          <div class="skill-category-title">
+            <i class="fa-solid fa-globe"></i> Languages
+          </div>
+          <div class="chips">
+            <span class="chip">Armenian — Native</span>
+            <span class="chip">English — Proficient</span>
+            <span class="chip">Russian — Proficient</span>
+            <span class="chip">Danish — Intermediate</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EXPERIENCE ═══ -->
+  <section id="experience">
+    <div class="max-width">
+      <p class="section-label fade-in">03 / Experience</p>
+      <h2 class="section-title fade-in">Education &amp; <span>Career</span></h2>
+      <div class="section-divider fade-in"></div>
+      <div class="timeline">
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+          <div class="timeline-content">
+            <div class="timeline-type-badge badge-phd"><i class="fa-solid fa-flask"></i> PhD</div>
+            <div class="timeline-header">
+              <span class="timeline-title">PhD in Pharmaceutical Sciences</span>
+              <span class="timeline-period">2022 – 2026</span>
+            </div>
+            <div class="timeline-org">
+              <i class="fa-solid fa-building-columns"></i>
+              University of Copenhagen — Gloriam Group
+            </div>
+            <div class="timeline-body">
+              <p>Thesis: <em>AI-powered drug discovery for G protein-coupled receptors</em></p>
+              <ul>
+                <li>Protein &amp; peptide binder engineering with RFdiffusion</li>
+                <li>AlphaFold2/3-based structural design &amp; protein-binder co-folding</li>
+                <li>Scalable cloud data pipelines on AWS (S3, EC2, CDK)</li>
+                <li>Danish Data Science Academy PhD Fellow</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+          <div class="timeline-content">
+            <div class="timeline-type-badge badge-msc"><i class="fa-solid fa-scroll"></i> M.Sc.</div>
+            <div class="timeline-header">
+              <span class="timeline-title">M.Sc. in Bioinformatics</span>
+              <span class="timeline-period">2020 – 2022</span>
+            </div>
+            <div class="timeline-org">
+              <i class="fa-solid fa-building-columns"></i>
+              University of Copenhagen
+            </div>
+            <div class="timeline-body">
+              <p>Thesis: <em>Automated pharmacogenomic decision support for Phase 1 clinical trials</em></p>
+              <ul>
+                <li>Biological sequence analysis &amp; protein language models</li>
+                <li>Danish Government Scholarship for Non-EU students</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+          <div class="timeline-content">
+            <div class="timeline-type-badge badge-work"><i class="fa-solid fa-microscope"></i> Research</div>
+            <div class="timeline-header">
+              <span class="timeline-title">Bioinformatics Research Assistant</span>
+              <span class="timeline-period">2020 – 2022</span>
+            </div>
+            <div class="timeline-org">
+              <i class="fa-solid fa-hospital"></i>
+              Rigshospitalet — Center for Genomic Medicine, Copenhagen
+            </div>
+            <div class="timeline-body">
+              <ul>
+                <li>Driver mutation identification in oral cavity squamous cell carcinoma (OCSCC)</li>
+                <li>Characterization of nonsense-mediated decay across cancer types</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+          <div class="timeline-content">
+            <div class="timeline-type-badge badge-fellow"><i class="fa-solid fa-star"></i> Fellowship</div>
+            <div class="timeline-header">
+              <span class="timeline-title">Researcher-in-Residence</span>
+              <span class="timeline-period">Summer 2019</span>
+            </div>
+            <div class="timeline-org">
+              <i class="fa-solid fa-building-columns"></i>
+              Harvard Medical School / MEEI — Dystonia Group, Boston
+            </div>
+            <div class="timeline-body">
+              <ul>
+                <li>ML-based identification of genetic variants with neural correlates in spasmodic dysphonia</li>
+                <li>AGBU Summer Research Scholarship recipient</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+          <div class="timeline-content">
+            <div class="timeline-type-badge badge-res"><i class="fa-solid fa-atom"></i> Research</div>
+            <div class="timeline-header">
+              <span class="timeline-title">Researcher</span>
+              <span class="timeline-period">2018 – 2020</span>
+            </div>
+            <div class="timeline-org">
+              <i class="fa-solid fa-flask-vial"></i>
+              Institute of Molecular Biology, National Academy of Sciences, Armenia
+            </div>
+            <div class="timeline-body">
+              <ul>
+                <li>Built transcriptome-guided drug repositioning platform</li>
+                <li>Investigated telomere maintenance mechanisms in disease contexts</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+          <div class="timeline-content">
+            <div class="timeline-type-badge badge-bsc"><i class="fa-solid fa-graduation-cap"></i> B.Sc.</div>
+            <div class="timeline-header">
+              <span class="timeline-title">B.Sc. in Computer Science &amp; Math Modeling</span>
+              <span class="timeline-period">2016 – 2020</span>
+            </div>
+            <div class="timeline-org">
+              <i class="fa-solid fa-building-columns"></i>
+              American University of Armenia, Yerevan
+            </div>
+            <div class="timeline-body">
+              <ul>
+                <li>Academic Excellence Scholarship (all years)</li>
+                <li>Presidential Award for Best Student in IT, 2016</li>
+                <li>State Award for Best Student in IT, 2019</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PUBLICATIONS ═══ -->
+  <section id="publications">
+    <div class="max-width">
+      <p class="section-label fade-in">04 / Research</p>
+      <h2 class="section-title fade-in">Selected <span>Publications</span></h2>
+      <div class="section-divider fade-in"></div>
+      <div class="pub-list">
+
+        <div class="pub-card fade-in">
+          <div class="pub-num">[1]</div>
+          <div>
+            <div class="pub-title">
+              Human-, Rosetta- versus AlphaFold-based design of Ghrelin receptor ligands
+              <span class="pub-badge"><i class="fa-solid fa-pen"></i> In Prep</span>
+            </div>
+            <div class="pub-meta">
+              Simonyan et al. — <span class="pub-journal">Manuscript in preparation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pub-card fade-in">
+          <div class="pub-num">[2]</div>
+          <div>
+            <div class="pub-title">Benchmarking full-length transcript single cell mRNA sequencing protocols</div>
+            <div class="pub-meta">
+              Probst, Simonyan et al. — <span class="pub-journal">BMC Genomics</span>, 2022
+            </div>
+          </div>
+        </div>
+
+        <div class="pub-card fade-in">
+          <div class="pub-num">[3]</div>
+          <div>
+            <div class="pub-title">Telomere maintenance pathway activity analysis enables tissue- and stage-specific predictions of cancer prognosis</div>
+            <div class="pub-meta">
+              Nersisyan, Simonyan et al. — <span class="pub-journal">Frontiers in Genetics</span>, 2021
+            </div>
+          </div>
+        </div>
+
+        <div class="pub-card fade-in">
+          <div class="pub-num">[4]</div>
+          <div>
+            <div class="pub-title">Transcriptome Patterns of BRCA1- and BRCA2-Mutated Breast and Ovarian Cancers</div>
+            <div class="pub-meta">
+              Arakelyan, …, Simonyan et al. — <span class="pub-journal">International Journal of Molecular Sciences</span>, 2021
+            </div>
+          </div>
+        </div>
+
+        <div class="pub-card fade-in">
+          <div class="pub-num">[5]</div>
+          <div>
+            <div class="pub-title">Bioreactors</div>
+            <div class="pub-meta">
+              Simonyan, Sarvazyan — <span class="pub-journal">Tissue Engineering. Learning Materials in Biosciences.</span> Springer, 2020
+            </div>
+          </div>
+        </div>
+
+        <div class="pub-card fade-in">
+          <div class="pub-num">[6]</div>
+          <div>
+            <div class="pub-title">Transcriptome-guided drug repositioning using machine learning</div>
+            <div class="pub-meta">
+              Arakelyan, …, Simonyan et al. — <span class="pub-journal">Pharmaceutics</span>, 2019
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <a class="scholar-link fade-in" href="https://scholar.google.com/citations?hl=en&user=w0gAP7IAAAAJ" target="_blank" rel="noopener" style="display:inline-flex;margin-top:1.5rem">
+        <i class="fa-solid fa-graduation-cap"></i>
+        Full publication list on Google Scholar &nbsp;&mdash;&nbsp; h-index: 6
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══ AWARDS ═══ -->
+  <section id="awards">
+    <div class="max-width">
+      <p class="section-label fade-in">05 / Recognition</p>
+      <h2 class="section-title fade-in">Awards &amp; <span>Honours</span></h2>
+      <div class="section-divider fade-in"></div>
+      <div class="awards-grid">
+
+        <div class="award-card fade-in">
+          <div class="award-icon"><i class="fa-solid fa-award"></i></div>
+          <div>
+            <div class="award-year">2023</div>
+            <div class="award-title">Danish Data Science Academy PhD Fellowship</div>
+          </div>
+        </div>
+
+        <div class="award-card fade-in">
+          <div class="award-icon"><i class="fa-solid fa-star"></i></div>
+          <div>
+            <div class="award-year">2022</div>
+            <div class="award-title">Best Presentation Award — RSU International Conference, Riga, Latvia</div>
+          </div>
+        </div>
+
+        <div class="award-card fade-in">
+          <div class="award-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div>
+            <div class="award-year">2020 – 2022</div>
+            <div class="award-title">Danish Government Scholarship for Non-EU Students</div>
+          </div>
+        </div>
+
+        <div class="award-card fade-in">
+          <div class="award-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <div>
+            <div class="award-year">2019</div>
+            <div class="award-title">State Award for Best Student in IT — Republic of Armenia</div>
+          </div>
+        </div>
+
+        <div class="award-card fade-in">
+          <div class="award-icon"><i class="fa-solid fa-flask"></i></div>
+          <div>
+            <div class="award-year">2019</div>
+            <div class="award-title">AGBU Summer Research Scholarship — USA</div>
+          </div>
+        </div>
+
+        <div class="award-card fade-in">
+          <div class="award-icon"><i class="fa-solid fa-medal"></i></div>
+          <div>
+            <div class="award-year">2016 – 2020</div>
+            <div class="award-title">Academic Excellence Scholarship — American University of Armenia</div>
+          </div>
+        </div>
+
+        <div class="award-card fade-in">
+          <div class="award-icon"><i class="fa-solid fa-trophy"></i></div>
+          <div>
+            <div class="award-year">2016</div>
+            <div class="award-title">Presidential Award for Best Student in IT — Republic of Armenia</div>
+          </div>
+        </div>
+
+        <div class="award-card fade-in">
+          <div class="award-icon"><i class="fa-solid fa-earth-europe"></i></div>
+          <div>
+            <div class="award-year">2015</div>
+            <div class="award-title">Bronze Medal — 26th International Biology Olympiad, Copenhagen, Denmark</div>
+          </div>
+        </div>
+
+        <div class="award-card fade-in">
+          <div class="award-icon"><i class="fa-solid fa-earth-asia"></i></div>
+          <div>
+            <div class="award-year">2014</div>
+            <div class="award-title">Bronze Medal — 25th International Biology Olympiad, Bali, Indonesia</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section id="contact">
+    <div class="contact-inner">
+      <p class="section-label fade-in" style="text-align:center">06 / Contact</p>
+      <h2 class="section-title fade-in" style="text-align:center">Let's <span>Connect</span></h2>
+      <div class="section-divider fade-in" style="margin:0 auto 3rem"></div>
+      <p class="contact-lead fade-in">
+        I am open to research collaborations, industry roles in computational drug discovery, and scientific data engineering positions. Feel free to reach out.
+      </p>
+      <div class="contact-links fade-in">
+        <a href="mailto:rmnsimonyan@gmail.com" class="contact-link">
+          <i class="fa-solid fa-envelope"></i>
+          rmnsimonyan@gmail.com
+        </a>
+        <a href="https://github.com/rmnsimonyan" target="_blank" rel="noopener" class="contact-link">
+          <i class="fa-brands fa-github"></i>
+          github.com/rmnsimonyan
+        </a>
+        <a href="https://scholar.google.com/citations?hl=en&user=w0gAP7IAAAAJ" target="_blank" rel="noopener" class="contact-link">
+          <i class="fa-solid fa-graduation-cap"></i>
+          Google Scholar
+        </a>
+        <a href="https://www.linkedin.com/in/rmnsimonyan" target="_blank" rel="noopener" class="contact-link">
+          <i class="fa-brands fa-linkedin"></i>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <p>Built by <span>Arman Simonyan</span> &mdash; Copenhagen, Denmark &mdash; <span id="year"></span></p>
+  </footer>
+
+  <!-- ═══ SCRIPTS ═══ -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    const sections   = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+    const secObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navAnchors.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { threshold: 0.35 });
+    sections.forEach(s => secObserver.observe(s));
+
+    const fadeItems = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    fadeItems.forEach(el => fadeObserver.observe(el));
+  </script>
+</body>
 </html>
