@@ -3,2229 +3,730 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arman Simonyan — Scientific Data Engineer &amp; Computational Drug Discovery</title>
-  <meta name="description" content="PhD candidate at University of Copenhagen working on AI-powered drug discovery for GPCRs. Scientific Data Engineer with expertise in bioinformatics, deep learning, and structural biology." />
-  <meta name="author" content="Arman Simonyan" />
-  <meta name="keywords" content="Arman Simonyan, Scientific Data Engineer, Bioinformatics, Computational Drug Discovery, GPCR, AlphaFold, RFdiffusion, AWS, Nextflow, Neuroscience, University of Copenhagen" />
+  <title>Arman A. Simonyan</title>
+  <meta name="description" content="Computational scientist in de novo protein design and pharmacogenomics. PhD at the University of Copenhagen on AI-powered drug discovery for G-protein coupled receptors." />
+  <meta name="author" content="Arman A. Simonyan" />
   <link rel="canonical" href="https://rmnsimonyan.github.io/" />
   <link rel="icon" href="favicon.ico" />
-  <!-- Open Graph (LinkedIn, Facebook, Slack) -->
-  <meta property="og:type" content="website" />
+  <meta name="color-scheme" content="light dark" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="profile" />
   <meta property="og:url" content="https://rmnsimonyan.github.io/" />
-  <meta property="og:title" content="Arman Simonyan — Scientific Data Engineer &amp; Computational Drug Discovery" />
-  <meta property="og:description" content="PhD candidate at the University of Copenhagen building AI-powered drug-discovery pipelines for GPCRs — bridging neuroscience, multi-omics, and scalable cloud data engineering." />
-  <meta property="og:site_name" content="Arman Simonyan" />
-  <!-- Twitter / X -->
+  <meta property="og:title" content="Arman A. Simonyan" />
+  <meta property="og:description" content="Computational scientist in de novo protein design and pharmacogenomics — University of Copenhagen, Rigshospitalet, Harvard Medical School." />
+  <meta property="og:site_name" content="Arman A. Simonyan" />
+  <meta property="og:image" content="https://rmnsimonyan.github.io/photo.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Arman Simonyan — Scientific Data Engineer &amp; Computational Drug Discovery" />
-  <meta name="twitter:description" content="PhD candidate at the University of Copenhagen building AI-powered drug-discovery pipelines for GPCRs — bridging neuroscience, multi-omics, and scalable cloud data engineering." />
+  <meta name="twitter:title" content="Arman A. Simonyan" />
+  <meta name="twitter:description" content="Computational scientist in de novo protein design and pharmacogenomics — University of Copenhagen, Rigshospitalet, Harvard Medical School." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Arman A. Simonyan",
+    "url": "https://rmnsimonyan.github.io/",
+    "jobTitle": "Computational scientist",
+    "image": "https://rmnsimonyan.github.io/photo.jpg",
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "University of Copenhagen" },
+    "sameAs": [
+      "https://orcid.org/0000-0002-1032-1073",
+      "https://scholar.google.com/citations?hl=en&user=w0gAP7IAAAAJ",
+      "https://github.com/rmnsimonyan",
+      "https://www.linkedin.com/in/scientist-arman-simonyan",
+      "https://www.researchgate.net/profile/Arman-Simonyan"
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+
   <style>
-    /* ───────────── RESET & BASE ───────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --navy:        #0a1628;
-      --navy-mid:    #0f2040;
-      --navy-light:  #162b52;
-      --teal:        #00bfa5;
-      --teal-dim:    #00897b;
-      --teal-glow:   rgba(0,191,165,.15);
-      --slate:       #1e3a5f;
-      --text-primary:   #e8edf5;
-      --text-secondary: #a0b0c8;
-      --text-muted:     #5c7a9a;
-      --border:      rgba(0,191,165,.18);
-      --card-bg:     rgba(15,32,64,.7);
-      --nav-h:       68px;
-      --radius:      10px;
-      --transition:  .3s ease;
-      --font:        'Inter', system-ui, sans-serif;
-      --mono:        'JetBrains Mono', monospace;
+      --bg:      #fcfcfa;
+      --text:    #1b1c1e;
+      --muted:   #66686d;
+      --faint:   #8d9096;
+      --rule:    #e3e3df;
+      --accent:  #0f6f68;
+      --thumb:   #ececea;
+      --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+      --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     }
-
-    html { scroll-behavior: smooth; font-size: 16px; }
-
-    body {
-      font-family: var(--font);
-      background: var(--navy);
-      color: var(--text-primary);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    ::selection { background: var(--teal); color: var(--navy); }
-
-    a { color: var(--teal); text-decoration: none; transition: color var(--transition); }
-    a:hover { color: #4dd0c4; }
-
-    /* ───────────── SCROLLBAR ───────────── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--navy); }
-    ::-webkit-scrollbar-thumb { background: var(--teal-dim); border-radius: 3px; }
-
-    /* ───────────── NAV ───────────── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: var(--nav-h);
-      z-index: 1000;
-      background: rgba(10,22,40,.92);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      padding: 0 clamp(1.5rem, 5vw, 3rem);
-      justify-content: space-between;
-      transition: box-shadow var(--transition);
-    }
-
-    nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,.4); }
-
-    .nav-brand {
-      font-family: var(--mono);
-      font-size: .95rem;
-      font-weight: 500;
-      color: var(--teal);
-      letter-spacing: .02em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: .85rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      padding-bottom: 2px;
-      border-bottom: 2px solid transparent;
-      transition: color var(--transition), border-color var(--transition);
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--teal);
-      border-bottom-color: var(--teal);
-    }
-
-    /* Hamburger */
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-      background: none;
-      border: none;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 24px; height: 2px;
-      background: var(--text-secondary);
-      border-radius: 2px;
-      transition: all var(--transition);
-    }
-    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-toggle.open span:nth-child(2) { opacity: 0; }
-    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    @media (max-width: 768px) {
-      .nav-toggle { display: flex; }
-      .nav-links {
-        position: absolute;
-        top: var(--nav-h);
-        left: 0; right: 0;
-        background: rgba(10,22,40,.98);
-        flex-direction: column;
-        align-items: center;
-        gap: 0;
-        padding: 1rem 0;
-        border-bottom: 1px solid var(--border);
-        display: none;
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:     #141517;
+        --text:   #e6e6e3;
+        --muted:  #a3a5aa;
+        --faint:  #7d8086;
+        --rule:   #2c2e32;
+        --accent: #5cc8bc;
+        --thumb:  #222428;
       }
-      .nav-links.open { display: flex; }
-      .nav-links li { width: 100%; text-align: center; }
-      .nav-links a { display: block; padding: .75rem 1rem; border-bottom: none; }
     }
 
-    /* ───────────── SECTIONS ───────────── */
-    section { padding: 6rem clamp(1.5rem, 8vw, 5rem); }
-    section:nth-child(odd)  { background: var(--navy); }
-    section:nth-child(even) { background: var(--navy-mid); }
-
-    .section-label {
-      font-family: var(--mono);
-      font-size: .78rem;
-      color: var(--teal);
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      margin-bottom: .6rem;
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
+    a { color: inherit; text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+    a:hover { color: var(--accent); text-decoration-color: currentColor; }
+    p { margin: 0; }
+    ul { margin: 0; padding: 0; list-style: none; }
 
-    .section-title {
-      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 1rem;
-      line-height: 1.25;
-    }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-    .section-title span { color: var(--teal); }
-
-    .section-divider {
-      width: 48px; height: 3px;
-      background: linear-gradient(90deg, var(--teal), transparent);
-      border-radius: 2px;
-      margin-bottom: 3rem;
-    }
-
-    .max-width { max-width: 1100px; margin: 0 auto; }
-
-    /* ───────────── HERO ───────────── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: calc(var(--nav-h) + 2rem);
-      position: relative;
-      overflow: hidden;
-    }
-
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(0,191,165,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,191,165,.04) 1px, transparent 1px);
-      background-size: 48px 48px;
-      animation: gridDrift 20s linear infinite;
-      pointer-events: none;
-    }
-
-    @keyframes gridDrift {
-      from { transform: translateY(0); }
-      to   { transform: translateY(48px); }
-    }
-
-    #hero::after {
-      content: '';
-      position: absolute;
-      top: 20%; left: 55%;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(0,191,165,.08) 0%, transparent 70%);
-      pointer-events: none;
-      animation: pulse 8s ease-in-out infinite alternate;
-    }
-
-    @keyframes pulse {
-      from { opacity: .6; transform: scale(1); }
-      to   { opacity: 1;  transform: scale(1.12); }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 780px;
-    }
-
-    .hero-greeting {
-      font-family: var(--mono);
-      font-size: .9rem;
-      color: var(--teal);
-      letter-spacing: .1em;
-      margin-bottom: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-    }
-
-    .hero-greeting::before {
-      content: '';
-      display: inline-block;
-      width: 32px; height: 1px;
-      background: var(--teal);
-    }
-
-    .hero-name {
-      font-size: clamp(2.4rem, 7vw, 5rem);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -.02em;
-      margin-bottom: .5rem;
-    }
-
-    .hero-tagline {
-      font-size: clamp(1rem, 2.5vw, 1.35rem);
-      color: var(--text-secondary);
-      font-weight: 300;
-      margin-bottom: 1.4rem;
-      max-width: 560px;
-    }
-
-    .hero-tagline strong { color: var(--teal); font-weight: 500; }
-
-    .hero-location {
-      font-size: .85rem;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: .4rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      padding: .75rem 1.6rem;
-      border-radius: var(--radius);
-      font-size: .9rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all var(--transition);
-      border: 2px solid transparent;
-    }
-
-    .btn-primary {
-      background: var(--teal);
-      color: var(--navy);
-      border-color: var(--teal);
-    }
-    .btn-primary:hover {
-      background: #4dd0c4;
-      border-color: #4dd0c4;
-      color: var(--navy);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,191,165,.35);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--teal);
-      border-color: var(--teal);
-    }
-    .btn-outline:hover {
-      background: var(--teal-glow);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,191,165,.2);
-    }
-
-    .hero-socials {
-      display: flex;
-      gap: 1.2rem;
-      margin-top: 2.5rem;
-    }
-
-    .hero-socials a {
-      width: 40px; height: 40px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      font-size: 1rem;
-      transition: all var(--transition);
-    }
-    .hero-socials a:hover {
-      background: var(--teal-glow);
-      border-color: var(--teal);
-      color: var(--teal);
-      transform: translateY(-3px);
-    }
-
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .4rem;
-      color: var(--text-muted);
-      font-size: .7rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      animation: bounce 2.5s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50%       { transform: translateX(-50%) translateY(6px); }
-    }
-
-    /* ───────────── ABOUT ───────────── */
-    .about-grid {
+    /* ── Layout: section index on the left, CV on the right ── */
+    .layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .about-text p {
-      color: var(--text-secondary);
-      margin-bottom: 1.1rem;
-      font-size: 1.02rem;
-    }
-
-    .about-text p:first-child {
-      color: var(--text-primary);
-      font-size: 1.08rem;
-    }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .stat-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.4rem;
-      text-align: center;
-      transition: border-color var(--transition), transform var(--transition);
-    }
-    .stat-card:hover {
-      border-color: var(--teal);
-      transform: translateY(-3px);
-    }
-
-    .stat-number {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--teal);
-      line-height: 1;
-      margin-bottom: .3rem;
-      font-family: var(--mono);
-    }
-
-    .stat-label {
-      font-size: .78rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: .08em;
-    }
-
-    @media (max-width: 768px) {
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    }
-
-    /* ───────────── SKILLS ───────────── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .skill-category {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.6rem;
-      transition: border-color var(--transition), box-shadow var(--transition);
-    }
-    .skill-category:hover {
-      border-color: var(--teal);
-      box-shadow: 0 0 24px rgba(0,191,165,.1);
-    }
-
-    .skill-category-title {
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-      font-size: .8rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      color: var(--teal);
-      margin-bottom: 1rem;
-    }
-
-    .skill-category-title i { font-size: .9rem; }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-    }
-
-    .chip {
-      background: rgba(0,191,165,.08);
-      border: 1px solid rgba(0,191,165,.2);
-      color: var(--text-secondary);
-      border-radius: 20px;
-      padding: .28rem .85rem;
-      font-size: .82rem;
-      font-family: var(--mono);
-      transition: all var(--transition);
-      white-space: nowrap;
-    }
-    .chip:hover {
-      background: rgba(0,191,165,.18);
-      border-color: var(--teal);
-      color: var(--teal);
-      transform: translateY(-1px);
-    }
-
-    /* ───────────── EXPERIENCE / TIMELINE ───────────── */
-    .timeline {
-      position: relative;
-      max-width: 860px;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 20px;
-      top: 0; bottom: 0;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--teal), transparent);
-    }
-
-    .timeline-item {
-      display: flex;
-      gap: 2rem;
-      margin-bottom: 3rem;
-      position: relative;
-    }
-
-    .timeline-dot {
-      width: 41px;
-      flex-shrink: 0;
-      display: flex;
+      grid-template-columns: 10rem minmax(0, 46rem);
+      column-gap: 4rem;
       justify-content: center;
-      padding-top: .15rem;
+      padding: 5rem 1.25rem 4rem;
     }
+    .page { min-width: 0; }
+    section[id] { scroll-margin-top: 2rem; }
 
-    .timeline-dot-inner {
-      width: 12px; height: 12px;
-      border-radius: 50%;
-      background: var(--teal);
-      border: 2px solid var(--navy);
-      box-shadow: 0 0 0 3px rgba(0,191,165,.25);
-      margin-top: .3rem;
-      flex-shrink: 0;
+    .toc {
+      position: sticky; top: 5rem; align-self: start;
+      font-family: var(--sans);
+      font-size: .8125rem;
+      padding-top: .9rem;
     }
-
-    .timeline-content {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem 1.8rem;
-      flex: 1;
-      transition: border-color var(--transition), transform var(--transition);
-    }
-    .timeline-content:hover {
-      border-color: var(--teal);
-      transform: translateX(4px);
-    }
-
-    .timeline-header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: .5rem;
-      margin-bottom: .5rem;
-    }
-
-    .timeline-title {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    .timeline-period {
-      font-family: var(--mono);
-      font-size: .78rem;
-      color: var(--teal);
-      background: var(--teal-glow);
-      padding: .2rem .65rem;
-      border-radius: 20px;
-      border: 1px solid rgba(0,191,165,.3);
+    .toc a {
+      display: block;
+      padding: .3rem 0 .3rem .85rem;
+      border-left: 1px solid var(--rule);
+      color: var(--faint);
+      text-decoration: none;
       white-space: nowrap;
     }
+    .toc a:hover { color: var(--text); }
+    .toc a.active { color: var(--text); border-left-color: var(--accent); }
 
-    .timeline-org {
-      font-size: .9rem;
-      color: var(--teal-dim);
-      font-weight: 500;
-      margin-bottom: .7rem;
-      display: flex;
-      align-items: center;
-      gap: .4rem;
+    /* ── Header ── */
+    header { margin-bottom: 3.5rem; display: flex; align-items: center; gap: 1.5rem; }
+    .photo {
+      width: 6rem; height: 6rem; flex: none;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--thumb);
     }
-
-    .timeline-body {
-      font-size: .9rem;
-      color: var(--text-secondary);
-    }
-
-    .timeline-body ul {
-      list-style: none;
-      margin-top: .4rem;
-    }
-    .timeline-body ul li {
-      padding-left: 1.2rem;
-      position: relative;
-      margin-bottom: .25rem;
-    }
-    .timeline-body ul li::before {
-      content: '›';
-      position: absolute;
-      left: 0;
-      color: var(--teal);
-      font-weight: 700;
-    }
-
-    .timeline-type-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .3rem;
-      font-size: .72rem;
+    h1 {
+      font-family: var(--serif);
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .07em;
-      padding: .15rem .6rem;
-      border-radius: 4px;
-      margin-bottom: .6rem;
+      font-size: clamp(2rem, 5vw, 2.6rem);
+      line-height: 1.15;
+      letter-spacing: -.01em;
+      margin: 0 0 .6rem;
     }
-    .badge-phd    { background: rgba(124,77,255,.15);  color: #b39ddb; border: 1px solid rgba(124,77,255,.3); }
-    .badge-msc    { background: rgba(66,165,245,.12);  color: #90caf9; border: 1px solid rgba(66,165,245,.3); }
-    .badge-bsc    { background: rgba(102,187,106,.12); color: #a5d6a7; border: 1px solid rgba(102,187,106,.3); }
-    .badge-work   { background: rgba(0,191,165,.12);   color: #80cbc4; border: 1px solid rgba(0,191,165,.3); }
-    .badge-fellow { background: rgba(255,167,38,.12);  color: #ffcc80; border: 1px solid rgba(255,167,38,.3); }
-    .badge-res    { background: rgba(240,98,146,.12);  color: #f48fb1; border: 1px solid rgba(240,98,146,.3); }
+    .contact {
+      font-family: var(--sans);
+      font-size: .875rem;
+      color: var(--muted);
+      display: flex; flex-wrap: wrap; gap: .25rem 1.1rem;
+    }
+    .contact a { text-decoration: none; }
+    .contact a:hover { text-decoration: underline; }
 
-    @media (max-width: 600px) {
-      .timeline::before { left: 14px; }
-      .timeline-dot { width: 30px; }
-    }
-
-    /* ───────────── PUBLICATIONS ───────────── */
-    .pub-list { display: flex; flex-direction: column; gap: 1.2rem; max-width: 900px; }
-
-    .pub-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.4rem 1.8rem;
-      display: flex;
-      gap: 1.4rem;
-      align-items: flex-start;
-      transition: border-color var(--transition), transform var(--transition);
-    }
-    .pub-card:hover {
-      border-color: var(--teal);
-      transform: translateX(4px);
-    }
-
-    .pub-num {
-      font-family: var(--mono);
-      font-size: .85rem;
-      color: var(--teal);
-      font-weight: 700;
-      min-width: 26px;
-      margin-top: .15rem;
-      opacity: .7;
-    }
-
-    .pub-title {
-      font-size: .97rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: .3rem;
-    }
-
-    .pub-meta {
-      font-size: .83rem;
-      color: var(--text-secondary);
-    }
-
-    .pub-journal {
-      font-style: italic;
-      color: var(--teal-dim);
-    }
-
-    .pub-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .3rem;
-      font-size: .7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .07em;
-      padding: .15rem .55rem;
-      border-radius: 4px;
-      margin-left: .5rem;
-      vertical-align: middle;
-      background: rgba(255,167,38,.12);
-      color: #ffcc80;
-      border: 1px solid rgba(255,167,38,.3);
-    }
-
-    /* ───────────── AWARDS ───────────── */
-    .awards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1rem;
-      max-width: 1000px;
-    }
-
-    .award-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.2rem 1.5rem;
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      transition: border-color var(--transition), transform var(--transition);
-    }
-    .award-card:hover {
-      border-color: var(--teal);
-      transform: translateY(-3px);
-    }
-
-    .award-icon {
-      width: 38px; height: 38px;
-      background: var(--teal-glow);
-      border: 1px solid rgba(0,191,165,.3);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--teal);
-      font-size: .95rem;
-      flex-shrink: 0;
-    }
-
-    .award-year {
-      font-family: var(--mono);
+    /* ── Sections ── */
+    section { margin-top: 3rem; }
+    h2 {
+      font-family: var(--sans);
       font-size: .75rem;
-      color: var(--teal);
-      letter-spacing: .05em;
-      margin-bottom: .2rem;
-    }
-
-    .award-title {
-      font-size: .9rem;
       font-weight: 600;
-      color: var(--text-primary);
-      line-height: 1.35;
-    }
-
-    /* ───────────── MEDIA / ENGAGEMENT ───────────── */
-
-    .engage-subsection { margin-top: 3rem; }
-    .engage-subsection:first-child { margin-top: 0; }
-
-    .subsection-label {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      font-size: .75rem;
-      font-weight: 700;
       letter-spacing: .12em;
       text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 1.5rem;
+      color: var(--faint);
+      margin: 0 0 1.25rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--rule);
     }
-    .subsection-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    /* ── Carousel ── */
-    .carousel-wrap { position: relative; }
-
-    .carousel-track-outer {
-      overflow: hidden;
-      border-radius: var(--radius);
+    h3 {
+      font-family: var(--serif);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      margin: 0;
     }
 
-    .carousel-track {
-      display: flex;
-      gap: 1.5rem;
-      transition: transform .45s cubic-bezier(.25,.8,.25,1);
-      will-change: transform;
-    }
-
-    .carousel-track .media-card {
-      flex: 0 0 calc(33.333% - 1rem);
-      min-width: 280px;
-    }
-
-    @media (max-width: 900px) {
-      .carousel-track .media-card { flex: 0 0 calc(50% - .75rem); }
-    }
-    @media (max-width: 600px) {
-      .carousel-track .media-card { flex: 0 0 90vw; }
-    }
-
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 10;
-      background: rgba(0,191,165,.18);
-      border: 1px solid var(--teal);
-      color: var(--teal);
-      width: 2.4rem;
-      height: 2.4rem;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: .85rem;
-      transition: background var(--transition);
-      backdrop-filter: blur(8px);
-    }
-    .carousel-btn:hover { background: rgba(0,191,165,.35); }
-    .carousel-btn.prev { left: -1.3rem; }
-    .carousel-btn.next { right: -1.3rem; }
-    .carousel-btn:disabled { opacity: .25; cursor: default; }
-
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: .45rem;
-      margin-top: 1.25rem;
-    }
-    .carousel-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--text-muted);
-      border: none;
-      cursor: pointer;
-      transition: background var(--transition), transform var(--transition);
-      padding: 0;
-    }
-    .carousel-dot.active { background: var(--teal); transform: scale(1.3); }
-
-    /* ── Media card (shared) ── */
-    .media-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: transform var(--transition), box-shadow var(--transition);
-      backdrop-filter: blur(8px);
-    }
-    .media-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0,191,165,.12);
-    }
-    .media-card video, .media-card iframe {
-      width: 100%; aspect-ratio: 16/9; display: block; background: #000;
-    }
-    .media-card-body { padding: 1rem 1.25rem 1.25rem; }
-    .media-card-tag {
-      font-size: .7rem; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--teal); margin-bottom: .4rem;
-    }
-    .media-card-title {
-      font-size: .95rem; font-weight: 600; color: var(--text-primary);
-      line-height: 1.4; margin-bottom: .4rem;
-    }
-    .media-card-desc { font-size: .82rem; color: var(--text-secondary); line-height: 1.5; }
-    .media-card-link {
-      display: inline-flex; align-items: center; gap: .35rem;
-      margin-top: .75rem; font-size: .8rem; font-weight: 600; color: var(--teal);
-    }
-
-    /* ── Education cards ── */
-    .edu-grid {
+    /* Dated rows: date column + body */
+    .row {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: 6.5rem 1fr;
       gap: 1.5rem;
     }
-
-    .khan-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.75rem;
-      display: flex;
-      gap: 1.25rem;
-      align-items: flex-start;
-      backdrop-filter: blur(8px);
-      transition: transform var(--transition), box-shadow var(--transition);
+    .row + .row { margin-top: 1.1rem; }
+    .org + .org { margin-top: 2rem; }
+    .org > h3 { margin-bottom: .6rem; }
+    .date {
+      font-family: var(--sans);
+      font-size: .8125rem;
+      color: var(--faint);
+      font-variant-numeric: tabular-nums;
+      padding-top: .2rem;
+      white-space: nowrap;
     }
-    .khan-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,191,165,.1); }
+    .role { font-style: italic; }
+    .body p + p { margin-top: .35rem; }
+    .label {
+      font-family: var(--sans);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-right: .35rem;
+    }
+    .note { color: var(--muted); font-size: .96875rem; }
 
-    .khan-icon {
-      width: 52px; height: 52px; border-radius: 12px;
-      background: linear-gradient(135deg,#14bf96,#1ca86a);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(20,191,150,.3);
+    .def + .def { margin-top: .7rem; }
+
+    /* ── Publications ── */
+    .pubs-summary { margin: -.5rem 0 1.5rem; font-family: var(--sans); font-size: .8125rem; }
+    h3.sub {
+      font-family: var(--sans);
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin: 2rem 0 .9rem;
+    }
+    .pubs-summary + h3.sub { margin-top: 0; }
+    .pub-title { line-height: 1.45; }
+    .pub-authors, .pub-venue { font-size: .9375rem; color: var(--muted); line-height: 1.5; }
+    .body .pub-authors, .body .pub-venue { margin-top: .15rem; }
+    .me { font-weight: 600; color: var(--text); }
+    a.doi { font-family: var(--sans); font-size: .8125rem; word-break: break-all; }
+
+    /* ── Media ── */
+    .media-group + .media-group { margin-top: 2.25rem; }
+    .media-group > h3 { margin-bottom: .2rem; }
+    .media-group > .note { margin-bottom: 1rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem 1.25rem;
+    }
+    .grid.small { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.1rem 1rem; }
+    figure { margin: 0; }
+    .frame {
+      position: relative;
+      display: block;
+      aspect-ratio: 16 / 9;
+      background: var(--thumb);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .frame img, .frame video, .frame iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border: 0; display: block;
+    }
+    .frame video { object-fit: contain; background: #000; }
+    a.frame::after {
+      content: "";
+      position: absolute; left: 50%; top: 50%;
+      width: 2.75rem; height: 2.75rem;
+      margin: -1.375rem 0 0 -1.375rem;
+      border-radius: 50%;
+      background: rgba(0,0,0,.6) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M9 7v10l8-5z'/%3E%3C/svg%3E") center / 60% no-repeat;
+      transition: background-color .15s;
+    }
+    a.frame:hover::after { background-color: rgba(0,0,0,.8); }
+    figcaption { margin-top: .5rem; font-size: .9375rem; line-height: 1.4; }
+    .grid.small figcaption { font-size: .875rem; }
+    .meta {
+      display: block;
+      font-family: var(--sans);
+      font-size: .75rem;
+      color: var(--faint);
+      margin-bottom: .1rem;
     }
 
-    .article-list { list-style: none; display: flex; flex-direction: column; gap: .85rem; }
-    .article-list li {
-      display: flex; align-items: flex-start; gap: .85rem;
-      padding: 1rem 1.25rem;
-      background: var(--card-bg); border: 1px solid var(--border);
-      border-radius: var(--radius); backdrop-filter: blur(8px);
-      transition: border-color var(--transition), transform var(--transition);
-    }
-    .article-list li:hover { border-color: var(--teal); transform: translateX(4px); }
-    .article-list .art-icon { color: var(--teal); font-size: 1rem; margin-top: .15rem; flex-shrink: 0; }
-    .article-list .art-body { flex: 1; }
-    .article-list .art-tag {
-      font-size: .68rem; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--text-muted); margin-bottom: .25rem;
-    }
-    .article-list .art-title { font-size: .9rem; font-weight: 600; color: var(--text-primary); line-height: 1.4; }
-    .article-list .art-desc { font-size: .8rem; color: var(--text-secondary); margin-top: .2rem; }
+    .links li + li { margin-top: .45rem; }
+    .links .meta { display: inline; margin: 0 0 0 .4rem; }
+    .links.inline { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
+    .links.inline li + li { margin-top: 0; }
 
-    /* ───────────── CONTACT ───────────── */
-    #contact { text-align: center; }
-
-    .contact-inner {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .contact-lead {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      margin-bottom: 2.5rem;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 3rem;
-    }
-
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-      padding: .7rem 1.4rem;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: var(--card-bg);
-      color: var(--text-secondary);
-      font-size: .9rem;
-      transition: all var(--transition);
-    }
-    .contact-link i { color: var(--teal); font-size: 1rem; }
-    .contact-link:hover {
-      border-color: var(--teal);
-      background: var(--teal-glow);
-      color: var(--teal);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0,191,165,.15);
-    }
-
-    /* ───────────── FOOTER ───────────── */
     footer {
-      background: var(--navy);
-      border-top: 1px solid var(--border);
-      text-align: center;
-      padding: 2rem;
-      font-size: .8rem;
-      color: var(--text-muted);
-      font-family: var(--mono);
+      margin-top: 4rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: .75rem;
+      color: var(--faint);
     }
 
-    footer span { color: var(--teal); }
+    /* Narrow screens: the section index becomes a sticky, scrollable top bar */
+    @media (max-width: 960px) {
+      .layout { display: block; padding: 0 0 4rem; }
+      .page { max-width: 46rem; margin: 0 auto; padding: 2.5rem 1.25rem 0; }
+      .toc {
+        position: sticky; top: 0; z-index: 10;
+        background: var(--bg);
+        border-bottom: 1px solid var(--rule);
+        padding: 0 1.25rem;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .toc::-webkit-scrollbar { display: none; }
+      .toc ul { display: flex; gap: 1.25rem; max-width: 46rem; margin: 0 auto; }
+      .toc a { border-left: 0; border-bottom: 2px solid transparent; padding: .75rem 0 .65rem; }
+      .toc a.active { border-bottom-color: var(--accent); }
+      section[id] { scroll-margin-top: 4rem; }
+    }
 
-    /* ───────────── FADE-IN ANIMATION ───────────── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+    @media (max-width: 600px) {
+      header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .photo { width: 5rem; height: 5rem; }
+      .row { grid-template-columns: 1fr; gap: .1rem; }
+      .date { padding-top: 0; }
+      .grid { grid-template-columns: 1fr; }
+      .grid.small { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
-    /* ───────────── UTILITIES ───────────── */
-    .scholar-link {
-      display: inline-flex;
-      align-items: center;
-      gap: .35rem;
-      font-size: .82rem;
-      color: var(--text-muted);
-      margin-top: .6rem;
-      transition: color var(--transition);
+    @media print {
+      :root { --bg: #fff; --text: #000; --muted: #444; --faint: #666; --rule: #ccc; }
+      body { font-size: 10.5pt; }
+      .layout { display: block; padding: 0; }
+      .page { max-width: none; padding: 0; }
+      .no-print { display: none; }
+      a { text-decoration: none; }
+      section { break-inside: avoid-page; margin-top: 1.6rem; }
     }
-    .scholar-link:hover { color: var(--teal); }
   </style>
 </head>
 <body>
+<div class="layout">
 
-  <!-- ═══ NAVIGATION ═══ -->
-  <nav id="navbar">
-    <div class="nav-brand">arman.simonyan<span style="color:var(--text-muted)">@ucph</span></div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#awards">Awards</a></li>
-      <li><a href="#ibo">IBO</a></li>
-      <li><a href="#media">Media</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<nav class="toc no-print" aria-label="Sections">
+  <ul>
+    <li><a href="#profile">Profile</a></li>
+    <li><a href="#career">Scientific career</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#awards">Grants and awards</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#teaching">Teaching and outreach</a></li>
+    <li><a href="#media">Media</a></li>
+    <li><a href="#press">Press</a></li>
+    <li><a href="#links">Links</a></li>
+  </ul>
+</nav>
 
-  <!-- ═══ HERO ═══ -->
-  <section id="hero">
-    <div class="hero-content fade-in">
-      <p class="hero-greeting">Hello, I'm</p>
-      <h1 class="hero-name">Arman<br>Simonyan</h1>
-      <p class="hero-tagline">
-        <strong>Scientific Data Engineer</strong> &amp; Computational Drug Discovery Researcher
-      </p>
-      <p class="hero-location">
-        <i class="fa-solid fa-location-dot" style="color:var(--teal)"></i>
-        Copenhagen, Denmark
-      </p>
-      <div class="hero-ctas">
-        <a href="#contact" class="btn btn-primary">
-          <i class="fa-solid fa-envelope"></i> Get in Touch
-        </a>
-        <a href="CV_Arman_Simonyan.pdf" target="_blank" rel="noopener" class="btn btn-outline">
-          <i class="fa-solid fa-file-arrow-down"></i> Download CV
-        </a>
-      </div>
-      <div class="hero-socials">
-        <a href="mailto:rmnsimonyan@gmail.com" title="Email" aria-label="Email">
-          <i class="fa-solid fa-envelope"></i>
-        </a>
-        <a href="https://github.com/rmnsimonyan" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
-          <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://scholar.google.com/citations?hl=en&user=w0gAP7IAAAAJ" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar">
-          <i class="fa-solid fa-graduation-cap"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/scientist-arman-simonyan" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
-          <i class="fa-brands fa-linkedin-in"></i>
-        </a>
-        <a href="https://orcid.org/0000-0002-1032-1073" target="_blank" rel="noopener" title="ORCID" aria-label="ORCID">
-          <i class="fa-brands fa-orcid"></i>
-        </a>
-        <a href="https://www.researchgate.net/profile/Arman-Simonyan" target="_blank" rel="noopener" title="ResearchGate" aria-label="ResearchGate">
-          <i class="fa-brands fa-researchgate"></i>
-        </a>
+<main class="page">
+
+  <header>
+    <img class="photo" src="photo.jpg" alt="Arman A. Simonyan" width="96" height="96" />
+    <div>
+      <h1>Arman A. Simonyan</h1>
+      <div class="contact">
+        <span>Copenhagen, Denmark</span>
+        <a href="mailto:rmnsimonyan@gmail.com">rmnsimonyan@gmail.com</a>
+        <a href="https://orcid.org/0000-0002-1032-1073" target="_blank" rel="noopener">ORCID 0000-0002-1032-1073</a>
+        <a class="no-print" href="CV_Arman_Simonyan.docx" download>CV (.docx)</a>
       </div>
     </div>
-    <div class="scroll-indicator" aria-hidden="true">
-      <i class="fa-solid fa-chevron-down"></i>
-      <span>Scroll</span>
-    </div>
+  </header>
+
+  <!-- ── Profile ── -->
+  <section id="profile">
+    <h2>Profile</h2>
+    <p>
+      Computational scientist in de novo protein design and pharmacogenomics, with expertise in pipeline
+      engineering, HPC, patient-level clinical multi-omics, structural and drug-response data processing and
+      resource management from Copenhagen University, Rigshospitalet, Harvard Medical School, &amp; Armenian
+      National Research Institutes; skilled in deep learning, Python &amp; C++.
+      Indie movie geek and cave painting fan.
+    </p>
   </section>
 
-  <!-- ═══ ABOUT ═══ -->
-  <section id="about">
-    <div class="max-width">
-      <p class="section-label fade-in">01 / About</p>
-      <h2 class="section-title fade-in">Who I <span>Am</span></h2>
-      <div class="section-divider fade-in"></div>
-      <div class="about-grid">
-        <div class="about-text fade-in">
-          <p>
-            I am a PhD candidate at the University of Copenhagen (Gloriam Group, Department of Drug Design and Pharmacology) developing AI-powered drug discovery approaches for G protein-coupled receptors — one of the largest and most pharmacologically relevant protein families.
-          </p>
-          <p>
-            My work spans protein and peptide engineering using RFdiffusion, AlphaFold2/3-based co-design, and protein language models, combined with large-scale cloud data pipelines on AWS. I bring a deep multi-omics background from earlier work in genomics, transcriptomics, and pharmacogenomics at Rigshospitalet and Harvard Medical School.
-          </p>
-          <p>
-            As a Danish Data Science Academy Fellow, I have 7+ years of end-to-end experience bridging biological insight and scalable engineering — from raw sequencing data to deployable bioinformatics infrastructure.
-          </p>
-          <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem">
-            <a class="scholar-link" href="https://scholar.google.com/citations?hl=en&user=w0gAP7IAAAAJ" target="_blank" rel="noopener">
-              <i class="fa-solid fa-graduation-cap"></i> Google Scholar
-            </a>
-            <a class="scholar-link" href="https://orcid.org/0000-0002-1032-1073" target="_blank" rel="noopener">
-              <i class="fa-brands fa-orcid"></i> ORCID
-            </a>
-            <a class="scholar-link" href="https://www.researchgate.net/profile/Arman-Simonyan" target="_blank" rel="noopener">
-              <i class="fa-brands fa-researchgate"></i> ResearchGate
-            </a>
-            <a class="scholar-link" href="https://drug.ku.dk/staff/?pure=en/persons/693020" target="_blank" rel="noopener">
-              <i class="fa-solid fa-building-columns"></i> KU Staff Page
-            </a>
-            <a class="scholar-link" href="https://ddsa.dk/member/arman-simonyan/" target="_blank" rel="noopener">
-              <i class="fa-solid fa-award"></i> DDSA Fellow Profile
-            </a>
-            <a class="scholar-link" href="CV_Arman_Simonyan.pdf" target="_blank" rel="noopener">
-              <i class="fa-solid fa-file-arrow-down"></i> Download CV (PDF)
-            </a>
-          </div>
+  <!-- ── Scientific career ── -->
+  <section id="career">
+    <h2>Scientific career</h2>
 
+    <div class="org">
+      <h3>University of Copenhagen</h3>
+      <div class="row">
+        <div class="date">2022–26</div>
+        <div class="body">
+          <p><span class="role">Ph.D. in Pharmaceutical Sciences</span> (Gloriam Group, ILF)</p>
+          <p><span class="label">Thesis</span>AI-powered drug discovery for G-protein coupled receptors</p>
+          <p class="note"><span class="label">Key competences</span>Protein/peptide engineering (BoltzGen, RFdiffusion3, AF-backpropagation, ProteinMPNN, ESM-IF, Rosetta Suite), generative and predictive modeling, co-folding (AF3, Boltz-2, ESM), pLMs, homology modeling, docking, molecular dynamics, database generation (GPCRdb), HPC &amp; resource management, grant acquisition &amp; management (DDSA).</p>
         </div>
-        <div class="fade-in">
-          <div class="stat-grid">
-            <div class="stat-card">
-              <div class="stat-number">7+</div>
-              <div class="stat-label">Years Experience</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">6</div>
-              <div class="stat-label">h-index</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">11</div>
-              <div class="stat-label">Publications</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">9</div>
-              <div class="stat-label">Awards &amp; Honours</div>
-            </div>
-          </div>
+      </div>
+    </div>
+
+    <div class="org">
+      <h3>Rigshospitalet</h3>
+      <div class="row">
+        <div class="date">2020–22</div>
+        <div class="body">
+          <p><span class="role">Bioinformatics research assistant</span> (Center for Genomic Medicine)</p>
+          <p>Single-cell protocol benchmark; identification of driver mutations in oral cavity squamous cell carcinoma; characterisation of nonsense-mediated decay in cancers.</p>
+          <p class="note"><span class="label">Key competences</span>Multi-omics analysis (bulk/single-cell/spatial RNA-seq, WGS), genome assembly, variant calling, pharmacogenomic &amp; clinical data management, LIMS, database mining, workflow orchestration &amp; automation (Snakemake, Conda, SLURM), containerisation.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="org">
+      <h3>Harvard Medical School</h3>
+      <div class="row">
+        <div class="date">2019</div>
+        <div class="body">
+          <p><span class="role">Neuroinformatics researcher-in-residence</span> (Dystonia Group, MEEI/HMS)</p>
+          <p>ML for identification of genetic variants with neural correlates in spasmodic dysphonia.</p>
+          <p class="note"><span class="label">Key competences</span>EEG &amp; fMRI brain imaging data analysis, Bayesian signal processing, variant calling, neurogenomics, pipeline engineering &amp; deployment, HPC.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="org">
+      <h3>Institute of Molecular Biology, Armenia</h3>
+      <div class="row">
+        <div class="date">2017–20</div>
+        <div class="body">
+          <p><span class="role">Research Assistant</span> (Bioinformatics group; Human Genomics lab)</p>
+          <p>Transcriptome-based drug repositioning; telomere lengthening pathway analysis in disease progression; characterisation of genetic markers for schizophrenia in Armenian population.</p>
+          <p class="note"><span class="label">Key competences</span>Biological pathway analysis (Cytoscape, PSF, TMM), sequence analysis (WGS, SNP, RNA-seq), drug repositioning, database mining, pipeline engineering, ML, DNA extraction &amp; purification, PCR, gel electrophoresis.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="org">
+      <h3>Orbeli Institute of Physiology, Armenia</h3>
+      <div class="row">
+        <div class="date">2017</div>
+        <div class="body">
+          <p><span class="role">Researcher-in-residence</span> (Tissue Engineering Lab)</p>
+          <p>Bioreactor engineering, tissue harvesting, fluorescent confocal microscopy, mass spectrometry.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ SKILLS ═══ -->
+  <!-- ── Education ── -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="row">
+      <div class="date">2020–22</div>
+      <div class="body">
+        <h3>M.Sc. in Bioinformatics</h3>
+        <p>University of Copenhagen</p>
+        <p><span class="label">Thesis</span>Automated pharmacogenomic decision support for inclusion in Phase 1 clinical trials</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="date">2016–20</div>
+      <div class="body">
+        <h3>B.Sc. in Computer Science &amp; Math Modeling</h3>
+        <p>American University of Armenia</p>
+        <p><span class="label">Thesis</span>Transcriptome &amp; survival patterns in BRCA1/2-positive breast &amp; ovarian cancers</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Skills ── -->
   <section id="skills">
-    <div class="max-width">
-      <p class="section-label fade-in">02 / Skills</p>
-      <h2 class="section-title fade-in">Technical <span>Expertise</span></h2>
-      <div class="section-divider fade-in"></div>
-      <div class="skills-grid">
-
-        <div class="skill-category fade-in">
-          <div class="skill-category-title">
-            <i class="fa-solid fa-code"></i> Programming
-          </div>
-          <div class="chips">
-            <span class="chip">Python</span>
-            <span class="chip">R</span>
-            <span class="chip">Bash</span>
-            <span class="chip">Java</span>
-            <span class="chip">C++</span>
-          </div>
-        </div>
-
-        <div class="skill-category fade-in">
-          <div class="skill-category-title">
-            <i class="fa-brands fa-aws"></i> Cloud &amp; DevOps
-          </div>
-          <div class="chips">
-            <span class="chip">AWS S3</span>
-            <span class="chip">AWS EC2</span>
-            <span class="chip">AWS CDK</span>
-            <span class="chip">Docker</span>
-            <span class="chip">Nextflow</span>
-            <span class="chip">Snakemake</span>
-            <span class="chip">Git</span>
-            <span class="chip">HPC</span>
-          </div>
-        </div>
-
-        <div class="skill-category fade-in">
-          <div class="skill-category-title">
-            <i class="fa-solid fa-brain"></i> AI / ML
-          </div>
-          <div class="chips">
-            <span class="chip">Graph Neural Networks</span>
-            <span class="chip">Attention / Transformers</span>
-            <span class="chip">VAEs</span>
-            <span class="chip">Protein LMs</span>
-            <span class="chip">RFdiffusion</span>
-            <span class="chip">AlphaFold2/3</span>
-            <span class="chip">ProteinMPNN</span>
-          </div>
-        </div>
-
-        <div class="skill-category fade-in">
-          <div class="skill-category-title">
-            <i class="fa-solid fa-dna"></i> Bioinformatics
-          </div>
-          <div class="chips">
-            <span class="chip">RNA-seq</span>
-            <span class="chip">scRNA-seq</span>
-            <span class="chip">Spatial Transcriptomics</span>
-            <span class="chip">WES / WGS</span>
-            <span class="chip">GWAS</span>
-            <span class="chip">Variant Calling</span>
-            <span class="chip">MSA</span>
-            <span class="chip">Molecular Dynamics</span>
-            <span class="chip">Docking</span>
-          </div>
-        </div>
-
-        <div class="skill-category fade-in">
-          <div class="skill-category-title">
-            <i class="fa-solid fa-globe"></i> Languages
-          </div>
-          <div class="chips">
-            <span class="chip">Armenian — Native</span>
-            <span class="chip">English — Proficient</span>
-            <span class="chip">Russian — Proficient</span>
-            <span class="chip">Danish — Conversational (B1)</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
+    <h2>Skills</h2>
+    <p class="def"><span class="label">R&amp;D</span>De novo protein and peptide binder design; G protein-coupled receptor (GPCR) modeling; structural bioinformatics (AlphaFold2/3, RFdiffusion2/3, Boltz-2, BoltzGen, PyMOL, UCSF ChimeraX); molecular dynamics simulations; high-throughput affinity scoring; hit-to-lead optimization; thermodynamic evaluation; high-throughput sequencing analysis; GWAS (PLINK, REGENIE, SAIGE); QTL analysis (FastQTL, QTLtools).</p>
+    <p class="def"><span class="label">Data science</span>Deep learning (transformers, GNNs, VAEs, SOMs); Conda and Python (PyTorch, JAX, Biopython, Gemmi, RDKit), R, Bash, Java, C++; Git; containerisation (Docker); workflow orchestration (Nextflow, Snakemake); HPC &amp; cloud computing (SLURM, AWS).</p>
+    <p class="def"><span class="label">Scientific administration</span>Scientific writing and peer review; prior art searching and patent landscape analysis; scientific poster and vector graphic design; regulatory documentation; research project management; multi-stakeholder communication; complex problem solving from first principles; grant and proposal synthesis; mentorship.</p>
+    <p class="def"><span class="label">Spoken languages</span>English (proficient), Danish (conversational, B1), Armenian (native), Russian (proficient).</p>
   </section>
 
-  <!-- ═══ EXPERIENCE ═══ -->
-  <section id="experience">
-    <div class="max-width">
-      <p class="section-label fade-in">03 / Experience</p>
-      <h2 class="section-title fade-in">Education &amp; <span>Career</span></h2>
-      <div class="section-divider fade-in"></div>
-      <div class="timeline">
-
-        <!-- ── Research & Education ── -->
-        <div class="timeline-item fade-in">
-          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-          <div class="timeline-content">
-            <div class="timeline-type-badge badge-phd"><i class="fa-solid fa-flask"></i> PhD</div>
-            <div class="timeline-header">
-              <span class="timeline-title">PhD in Pharmaceutical Sciences</span>
-              <span class="timeline-period">2022 – 2026</span>
-            </div>
-            <div class="timeline-org">
-              <i class="fa-solid fa-building-columns"></i>
-              University of Copenhagen — Gloriam Group
-            </div>
-            <div class="timeline-body">
-              <p>Thesis: <em>AI-powered drug discovery for G protein-coupled receptors</em></p>
-              <ul>
-                <li>Protein &amp; peptide binder engineering with RFdiffusion &amp; AlphaFold2/3</li>
-                <li>Scalable cloud data pipelines on AWS (S3, EC2, CDK)</li>
-                <li>Danish Data Science Academy PhD Fellow</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-in">
-          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-          <div class="timeline-content">
-            <div class="timeline-type-badge badge-work"><i class="fa-solid fa-microscope"></i> Research</div>
-            <div class="timeline-header">
-              <span class="timeline-title">Research Assistant</span>
-              <span class="timeline-period">2022 – 2023</span>
-            </div>
-            <div class="timeline-org">
-              <i class="fa-solid fa-building-columns"></i>
-              University of Copenhagen — Dept. of Drug Design &amp; Pharmacology
-            </div>
-            <div class="timeline-body">
-              <ul>
-                <li>Computational design and analysis of GPCR ligands</li>
-                <li>Structural bioinformatics and docking pipelines</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-in">
-          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-          <div class="timeline-content">
-            <div class="timeline-type-badge badge-msc"><i class="fa-solid fa-scroll"></i> M.Sc.</div>
-            <div class="timeline-header">
-              <span class="timeline-title">M.Sc. in Bioinformatics <span style="font-weight:400;font-size:.85em">(CS specialisation · GPA 11/12)</span></span>
-              <span class="timeline-period">2020 – 2022</span>
-            </div>
-            <div class="timeline-org">
-              <i class="fa-solid fa-building-columns"></i>
-              University of Copenhagen
-            </div>
-            <div class="timeline-body">
-              <p>Thesis: <em>Automated pharmacogenomic decision support for Phase 1 clinical trials</em></p>
-              <ul>
-                <li>Biological sequence analysis, protein language models, multi-omics</li>
-                <li>Danish Government Scholarship for Non-EU students</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-in">
-          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-          <div class="timeline-content">
-            <div class="timeline-type-badge badge-work"><i class="fa-solid fa-microscope"></i> Research</div>
-            <div class="timeline-header">
-              <span class="timeline-title">Bioinformatics Research Assistant</span>
-              <span class="timeline-period">2020 – 2022</span>
-            </div>
-            <div class="timeline-org">
-              <i class="fa-solid fa-hospital"></i>
-              Rigshospitalet — Center for Genomic Medicine, Copenhagen
-            </div>
-            <div class="timeline-body">
-              <ul>
-                <li>Driver mutation identification in oral cavity squamous cell carcinoma (OCSCC)</li>
-                <li>CNV detection benchmarking; nonsense-mediated decay characterisation across cancers</li>
-                <li>Low-input RNA-seq protocol development for febrile neutropenia patients</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-in">
-          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-          <div class="timeline-content">
-            <div class="timeline-type-badge badge-fellow"><i class="fa-solid fa-star"></i> Fellowship</div>
-            <div class="timeline-header">
-              <span class="timeline-title">Visiting Researcher — Dystonia &amp; Speech Motor Control Lab</span>
-              <span class="timeline-period">Summer 2019</span>
-            </div>
-            <div class="timeline-org">
-              <i class="fa-solid fa-building-columns"></i>
-              Harvard Medical School / MEEI, Boston, USA
-            </div>
-            <div class="timeline-body">
-              <ul>
-                <li>ML-based GWAS/QTL analysis of genetic variants with neural correlates in spasmodic dysphonia</li>
-                <li>AGBU Summer Research Scholarship recipient</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-in">
-          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-          <div class="timeline-content">
-            <div class="timeline-type-badge badge-res"><i class="fa-solid fa-atom"></i> Research</div>
-            <div class="timeline-header">
-              <span class="timeline-title">Researcher — Bioinformatics Group</span>
-              <span class="timeline-period">2018 – 2020</span>
-            </div>
-            <div class="timeline-org">
-              <i class="fa-solid fa-flask-vial"></i>
-              Institute of Molecular Biology, National Academy of Sciences, Armenia
-            </div>
-            <div class="timeline-body">
-              <ul>
-                <li>Built transcriptome-guided drug repositioning platform (ML + RNA-seq)</li>
-                <li>Telomere maintenance pathway activity analysis across tissues</li>
-                <li>BRCA1/2 transcriptome pattern analysis in breast &amp; ovarian cancers</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-in">
-          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-          <div class="timeline-content">
-            <div class="timeline-type-badge badge-res"><i class="fa-solid fa-vials"></i> Research</div>
-            <div class="timeline-header">
-              <span class="timeline-title">Visiting Researcher — Tissue Engineering Lab</span>
-              <span class="timeline-period">Sep – Dec 2017</span>
-            </div>
-            <div class="timeline-org">
-              <i class="fa-solid fa-flask-vial"></i>
-              Orbeli Institute of Physiology, National Academy of Sciences, Armenia
-            </div>
-            <div class="timeline-body">
-              <ul>
-                <li>Decellularisation and recellularisation of rat liver scaffolds</li>
-                <li>3D bioprinting and tissue-engineered construct characterisation</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-in">
-          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-          <div class="timeline-content">
-            <div class="timeline-type-badge badge-res"><i class="fa-solid fa-dna"></i> Research</div>
-            <div class="timeline-header">
-              <span class="timeline-title">Research Assistant — Human Genomics Lab</span>
-              <span class="timeline-period">2016 – 2017</span>
-            </div>
-            <div class="timeline-org">
-              <i class="fa-solid fa-flask-vial"></i>
-              Institute of Molecular Biology, National Academy of Sciences, Armenia
-            </div>
-            <div class="timeline-body">
-              <ul>
-                <li>Genomic sequence analysis and variant annotation pipelines</li>
-                <li>Wet-lab support: PCR, gel electrophoresis, DNA extraction</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-in">
-          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-          <div class="timeline-content">
-            <div class="timeline-type-badge badge-bsc"><i class="fa-solid fa-graduation-cap"></i> B.Sc.</div>
-            <div class="timeline-header">
-              <span class="timeline-title">B.Sc. in Computer Science &amp; Math Modeling <span style="font-weight:400;font-size:.85em">(GPA 3.96/4)</span></span>
-              <span class="timeline-period">2016 – 2020</span>
-            </div>
-            <div class="timeline-org">
-              <i class="fa-solid fa-building-columns"></i>
-              American University of Armenia, Yerevan
-            </div>
-            <div class="timeline-body">
-              <ul>
-                <li>Academic Excellence Scholarship (all years); Presidential Award for Best Student in IT (2016); State Award for Best Student in IT (2019)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- end research timeline -->
-
-      <!-- Teaching & Leadership -->
-      <h3 class="section-subtitle fade-in" style="margin-top:3.5rem;margin-bottom:1.5rem;font-size:1.25rem;color:var(--teal);letter-spacing:.05em;text-transform:uppercase">Teaching &amp; Leadership</h3>
-      <div class="timeline">
-
-        <div class="timeline-item fade-in">
-          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-          <div class="timeline-content">
-            <div class="timeline-type-badge badge-teach" style="background:rgba(0,191,165,.15);color:#00bfa5;border:1px solid rgba(0,191,165,.3)"><i class="fa-solid fa-chalkboard-teacher"></i> Teaching</div>
-            <div class="timeline-header">
-              <span class="timeline-title">University Lecturer &amp; Thesis Supervisor</span>
-              <span class="timeline-period">2023 –</span>
-            </div>
-            <div class="timeline-org">
-              <i class="fa-solid fa-building-columns"></i>
-              University of Copenhagen
-            </div>
-            <div class="timeline-body">
-              <ul>
-                <li>Supervised 1 Master's thesis project &amp; 1 Master's block project</li>
-                <li>SLKKIL112U Structure-based Drug Research (2×4 h, 2023)</li>
-                <li>SFAB20004U Cellular and Molecular Biology (7×4 h, 2023)</li>
-                <li>Certified: Introduction to University Pedagogy</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-in">
-          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-          <div class="timeline-content">
-            <div class="timeline-type-badge badge-teach" style="background:rgba(0,191,165,.15);color:#00bfa5;border:1px solid rgba(0,191,165,.3)"><i class="fa-solid fa-trophy"></i> Olympiad</div>
-            <div class="timeline-header">
-              <span class="timeline-title">Biology Olympiad Educator &amp; Jury Member</span>
-              <span class="timeline-period">2018 – 2023</span>
-            </div>
-            <div class="timeline-org">
-              <i class="fa-solid fa-globe"></i>
-              International &amp; Armenian National Biology Olympiad
-            </div>
-            <div class="timeline-body">
-              <ul>
-                <li>Coached 5 generations of Armenian national IBO teams; authored exams &amp; practical tasks</li>
-                <li>IBO jury member &amp; delegation representative — see the dedicated <a href="#ibo" style="color:var(--teal)">Biology Olympiad</a> section</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-in">
-          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-          <div class="timeline-content">
-            <div class="timeline-type-badge badge-teach" style="background:rgba(0,191,165,.15);color:#00bfa5;border:1px solid rgba(0,191,165,.3)"><i class="fa-solid fa-video"></i> E-Learning</div>
-            <div class="timeline-header">
-              <span class="timeline-title">E-Learning Specialist</span>
-              <span class="timeline-period">2019 – 2020</span>
-            </div>
-            <div class="timeline-org">
-              <i class="fa-solid fa-earth-europe"></i>
-              GIZ — Good Local Governance Program, South Caucasus
-            </div>
-            <div class="timeline-body">
-              <ul>
-                <li>Created municipal management information system e-learning materials for 6,000+ municipality workers</li>
-                <li>Trained 10 colleagues on e-learning authoring tools</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-in">
-          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-          <div class="timeline-content">
-            <div class="timeline-type-badge badge-teach" style="background:rgba(0,191,165,.15);color:#00bfa5;border:1px solid rgba(0,191,165,.3)"><i class="fa-solid fa-video"></i> E-Learning</div>
-            <div class="timeline-header">
-              <span class="timeline-title">E-Learning Specialist — Khan Academy Armenia</span>
-              <span class="timeline-period">2017 – 2020</span>
-            </div>
-            <div class="timeline-org">
-              <i class="fa-solid fa-book-open"></i>
-              Khan Academy Armenia
-            </div>
-            <div class="timeline-body">
-              <ul>
-                <li>Led a team of 6 videographers to produce 1,200+ STEM video lessons, articles &amp; exercises in Armenian</li>
-                <li>Built the Math, Science, and Art History sections of <a href="https://hy.khanacademy.org/" target="_blank" rel="noopener" style="color:var(--teal)">hy.khanacademy.org</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- end teaching timeline -->
-
-      <!-- Conference Talks -->
-      <h3 class="section-subtitle fade-in" style="margin-top:3.5rem;margin-bottom:1.5rem;font-size:1.25rem;color:var(--teal);letter-spacing:.05em;text-transform:uppercase">Conference Talks</h3>
-      <div class="pub-list">
-        <div class="pub-card fade-in">
-          <div class="pub-num">2025</div>
-          <div>
-            <div class="pub-title">New ML-Driven Approaches for Peptide Hormone and Drug Discovery</div>
-            <div class="pub-meta">76th Mosbacher Kolloquium "AI-driven (r)evolution in structural biology &amp; protein design" — <span class="pub-journal">Germany</span></div>
-          </div>
-        </div>
-        <div class="pub-card fade-in">
-          <div class="pub-num">2020</div>
-          <div>
-            <div class="pub-title">Analysis of Transcriptome Changes in Response to Heavy Metals Using Self-Organizing Maps</div>
-            <div class="pub-meta">Rīga Stradiņš University Intl. Student Conference — <span class="pub-journal">Latvia</span> &nbsp;<span class="pub-badge" style="background:rgba(255,184,0,.15);color:#ffb800">🏆 Best Presentation</span></div>
-          </div>
-        </div>
-        <div class="pub-card fade-in">
-          <div class="pub-num">2019</div>
-          <div>
-            <div class="pub-title">Genome-wide Association Study in Laryngeal Dystonia</div>
-            <div class="pub-meta">XIV Annual Intl. Conf. of Russian-Armenian University — <span class="pub-journal">Armenia</span></div>
-          </div>
-        </div>
-        <div class="pub-card fade-in">
-          <div class="pub-num">2019</div>
-          <div>
-            <div class="pub-title">Tissue Engineered Constructs and 3D Bioprinting</div>
-            <div class="pub-meta">XXVI Intl. Student Conf. "Lomonosov 2019" — <span class="pub-journal">Russia</span> &nbsp;<span class="pub-badge" style="background:rgba(255,184,0,.15);color:#ffb800">🏆 Best Oral Presentation</span></div>
-          </div>
-        </div>
-        <div class="pub-card fade-in">
-          <div class="pub-num">2018</div>
-          <div>
-            <div class="pub-title">Comparative Study of Liver Bioengineering Protocols</div>
-            <div class="pub-meta">Intl. Scientific Conf. "Kliment's Days" — <span class="pub-journal">Bulgaria</span></div>
-          </div>
-        </div>
-        <div class="pub-card fade-in">
-          <div class="pub-num">2018</div>
-          <div>
-            <div class="pub-title">Decellularisation and Recellularisation of Rat Liver</div>
-            <div class="pub-meta">Academic Session, Vanadzor State University — <span class="pub-journal">Armenia</span></div>
-          </div>
-        </div>
-      </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ PUBLICATIONS ═══ -->
-  <section id="publications">
-    <div class="max-width">
-      <p class="section-label fade-in">04 / Research</p>
-      <h2 class="section-title fade-in">Selected <span>Publications</span></h2>
-      <div class="section-divider fade-in"></div>
-      <div class="pub-list">
-
-        <div class="pub-card fade-in">
-          <div class="pub-num">[1]</div>
-          <div>
-            <div class="pub-title">
-              Human-, Rosetta- versus AlphaFold-based design of Ghrelin receptor ligands
-              <span class="pub-badge"><i class="fa-solid fa-pen"></i> In Prep</span>
-            </div>
-            <div class="pub-meta">
-              Simonyan et al. — <span class="pub-journal">Manuscript in preparation</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-card fade-in">
-          <div class="pub-num">[2]</div>
-          <div>
-            <div class="pub-title">A Protocol for Low-Input RNA-Sequencing of Patients with Febrile Neutropenia Captures Relevant Immunological Information</div>
-            <div class="pub-meta">
-              Probst, Smedegaard, <strong>Simonyan</strong> et al. — <span class="pub-journal">International Journal of Molecular Sciences</span>, 2023 &nbsp;<span class="pub-badge" style="background:rgba(0,191,165,.12);color:var(--teal)">4 citations</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-card fade-in">
-          <div class="pub-num">[3]</div>
-          <div>
-            <div class="pub-title">Benchmarking full-length transcript single cell mRNA sequencing protocols</div>
-            <div class="pub-meta">
-              Probst, <strong>Simonyan</strong> et al. — <span class="pub-journal">BMC Genomics</span>, 2022 &nbsp;<span class="pub-badge" style="background:rgba(0,191,165,.12);color:var(--teal)">22 citations</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-card fade-in">
-          <div class="pub-num">[4]</div>
-          <div>
-            <div class="pub-title">A Comparison of Tools for Copy-Number Variation Detection in Germline Whole Exome and Whole Genome Sequencing Data</div>
-            <div class="pub-meta">
-              Gabrielaite, …, <strong>Simonyan</strong> et al. — <span class="pub-journal">Cancers</span>, 2021 &nbsp;<span class="pub-badge" style="background:rgba(0,191,165,.12);color:var(--teal)">132 citations</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-card fade-in">
-          <div class="pub-num">[5]</div>
-          <div>
-            <div class="pub-title">Telomere Maintenance Pathway Activity Analysis Enables Tissue- and Gene-Level Inferences</div>
-            <div class="pub-meta">
-              Nersisyan, <strong>Simonyan</strong> et al. — <span class="pub-journal">Frontiers in Genetics</span>, 2021 &nbsp;<span class="pub-badge" style="background:rgba(0,191,165,.12);color:var(--teal)">9 citations</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-card fade-in">
-          <div class="pub-num">[6]</div>
-          <div>
-            <div class="pub-title">Transcriptome Patterns of BRCA1- and BRCA2-Mutated Breast and Ovarian Cancers</div>
-            <div class="pub-meta">
-              Arakelyan, …, <strong>Simonyan</strong> et al. — <span class="pub-journal">International Journal of Molecular Sciences</span>, 2021 &nbsp;<span class="pub-badge" style="background:rgba(0,191,165,.12);color:var(--teal)">17 citations</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-card fade-in">
-          <div class="pub-num">[7]</div>
-          <div>
-            <div class="pub-title">Quantitative Trait Locus Analysis in Spasmodic Dysphonia</div>
-            <div class="pub-meta">
-              <strong>Simonyan</strong> — <span class="pub-journal">Proceedings of the XIV Annual Intl. Conf. of Russian-Armenian University</span>, 2020
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-card fade-in">
-          <div class="pub-num">[8]</div>
-          <div>
-            <div class="pub-title">Tissue Engineering Liver: An Emerging Therapy for Hepatic Diseases</div>
-            <div class="pub-meta">
-              Girgoryan, <strong>Simonyan</strong> et al. — <span class="pub-journal">The New Armenian Medical Journal</span>, 2020
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-card fade-in">
-          <div class="pub-num">[9]</div>
-          <div>
-            <div class="pub-title">Bioreactors</div>
-            <div class="pub-meta">
-              <strong>Simonyan</strong>, Sarvazyan — in: <span class="pub-journal">Tissue Engineering. Learning Materials in Biosciences.</span> Springer, 2020
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-card fade-in">
-          <div class="pub-num">[10]</div>
-          <div>
-            <div class="pub-title">Transcriptome-Guided Drug Repositioning</div>
-            <div class="pub-meta">
-              Arakelyan, …, <strong>Simonyan</strong> et al. — <span class="pub-journal">Pharmaceutics</span>, 2019 &nbsp;<span class="pub-badge" style="background:rgba(0,191,165,.12);color:var(--teal)">28 citations</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-card fade-in">
-          <div class="pub-num">[11]</div>
-          <div>
-            <div class="pub-title">Analysis of Transcriptome Changes in Response to Heavy Metals Using Self-Organizing Maps</div>
-            <div class="pub-meta">
-              <strong>Simonyan</strong>, Stepanyan — <span class="pub-journal">Katchar Scientific Periodical</span>, 2019
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;align-items:center" class="fade-in">
-        <a class="scholar-link" href="https://scholar.google.com/citations?hl=en&user=w0gAP7IAAAAJ&sortby=pubdate" target="_blank" rel="noopener" style="display:inline-flex">
-          <i class="fa-solid fa-graduation-cap"></i>
-          Google Scholar &nbsp;&mdash;&nbsp; h-index: 6 &nbsp;·&nbsp; 221 citations
-        </a>
-        <span style="color:var(--muted);font-size:.85rem">Total: 11 publications &nbsp;·&nbsp; Most cited: <em>Cancers</em> 2021 (132 citations)</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ AWARDS ═══ -->
+  <!-- ── Grants and awards ── -->
   <section id="awards">
-    <div class="max-width">
-      <p class="section-label fade-in">05 / Recognition</p>
-      <h2 class="section-title fade-in">Awards &amp; <span>Honours</span></h2>
-      <div class="section-divider fade-in"></div>
-      <div class="awards-grid">
+    <h2>Grants and awards</h2>
+    <div class="row"><div class="date">2023</div><div class="body">Danish Data Science Academy PhD Fellowship</div></div>
+    <div class="row"><div class="date">2020</div><div class="body">Danish Governmental scholarship for non-EU students (Denmark)</div></div>
+    <div class="row"><div class="date">2019</div><div class="body">State Award for The Best Student in IT (Armenia)</div></div>
+    <div class="row"><div class="date">2019</div><div class="body">Presidential Award for The Best Student in IT (Armenia)</div></div>
+    <div class="row"><div class="date">2015</div><div class="body">Bronze medal, 26th International Biology Olympiad (Denmark)</div></div>
+    <div class="row"><div class="date">2014</div><div class="body">Bronze medal, 25th International Biology Olympiad (Indonesia)</div></div>
+  </section>
 
-        <div class="award-card fade-in">
-          <div class="award-icon"><i class="fa-solid fa-award"></i></div>
-          <div>
-            <div class="award-year">2023</div>
-            <div class="award-title">Danish Data Science Academy PhD Fellowship</div>
+  <!-- ── Publications ── -->
+  <section id="publications" class="pubs">
+    <h2>Publications</h2>
+    <p class="note pubs-summary">h-index 6 · 243 citations · <a href="https://scholar.google.com/citations?hl=en&amp;user=w0gAP7IAAAAJ&amp;sortby=pubdate" target="_blank" rel="noopener">Google Scholar</a></p>
+
+    <h3 class="sub">Patent applications</h3>
+    <div class="row"><div class="date">2026</div><div class="body">
+      <p class="pub-title">Antagonists for the ghrelin receptor</p>
+      <p class="pub-authors">Gloriam DE, <b class="me">Simonyan AA</b>, Holst B, Buzón AR, Kulkarni Y</p>
+      <p class="pub-venue">European patent application, filed November 2026 (pending)</p>
+    </div></div>
+    <div class="row"><div class="date">2026</div><div class="body">
+      <p class="pub-title">Partial agonists for the ghrelin receptor</p>
+      <p class="pub-authors">Gloriam DE, <b class="me">Simonyan AA</b>, Holst B, Buzón AR, Kulkarni Y</p>
+      <p class="pub-venue">European patent application, filed November 2026 (pending)</p>
+    </div></div>
+    <div class="row"><div class="date">2026</div><div class="body">
+      <p class="pub-title">Inverse agonists for the ghrelin receptor</p>
+      <p class="pub-authors">Gloriam DE, <b class="me">Simonyan AA</b>, Holst B, Buzón AR, Kulkarni Y</p>
+      <p class="pub-venue">European patent application, filed November 2026 (pending)</p>
+    </div></div>
+
+    <h3 class="sub">Journal articles</h3>
+    <div class="row"><div class="date">2026</div><div class="body">
+      <p class="pub-title">GPCRdb in 2027: AI-driven structure annotation, non-physiological ligand–GPCR models and expanding the ligand space</p>
+      <p class="pub-authors">Xiao B, <b class="me">Simonyan AA</b>, Rodríguez-Espigare I, Caroli J, …, Pándy-Szekeres G, Gloriam DE</p>
+      <p class="pub-venue"><i>Nucleic Acids Research</i>, in press (accepted November 2026)</p>
+    </div></div>
+    <div class="row"><div class="date">2026</div><div class="body">
+      <p class="pub-title">Discovery of ghrelin receptor ligands leveraging AlphaFold, Rosetta and human expert designs</p>
+      <p class="pub-authors"><b class="me">Simonyan AA</b>, Kulkarni Y, Buzón AR, Holst B, Boomsma W, Gloriam DE</p>
+      <p class="pub-venue">Under review</p>
+    </div></div>
+    <div class="row"><div class="date">2023</div><div class="body">
+      <p class="pub-title">A protocol for low-input RNA-sequencing of patients with febrile neutropenia captures relevant immunological information</p>
+      <p class="pub-authors">Probst V, Smedegaard LM, <b class="me">Simonyan AA</b>, Guo Y, Østrup O, Dungu KHS, Vissing NH, Nygaard U, Bagger FO</p>
+      <p class="pub-venue"><i>International Journal of Molecular Sciences</i> · <a class="doi" href="https://doi.org/10.3390/ijms241210251" target="_blank" rel="noopener">doi:10.3390/ijms241210251</a></p>
+    </div></div>
+    <div class="row"><div class="date">2022</div><div class="body">
+      <p class="pub-title">Benchmarking full-length transcript single-cell mRNA sequencing protocols</p>
+      <p class="pub-authors">Probst V, <b class="me">Simonyan AA</b>, Pacheco F, Guo Y, Nielsen FC, Bagger FO</p>
+      <p class="pub-venue"><i>BMC Genomics</i> · <a class="doi" href="https://doi.org/10.1186/s12864-022-09014-5" target="_blank" rel="noopener">doi:10.1186/s12864-022-09014-5</a></p>
+    </div></div>
+    <div class="row"><div class="date">2021</div><div class="body">
+      <p class="pub-title">A comparison of tools for copy-number variation detection in germline whole exome and whole genome sequencing data</p>
+      <p class="pub-authors">Gabrielaite M, Torp MH, Rasmussen MS, …, <b class="me">Simonyan AA</b>, Yde CW, Olsen LR, Marvig RL, Østrup O, Rossing M, Nielsen FC, Winther O, Bagger FO</p>
+      <p class="pub-venue"><i>Cancers</i> · <a class="doi" href="https://doi.org/10.3390/cancers13246283" target="_blank" rel="noopener">doi:10.3390/cancers13246283</a></p>
+    </div></div>
+    <div class="row"><div class="date">2021</div><div class="body">
+      <p class="pub-title">Telomere maintenance pathway activity analysis enables tissue- and gene-level inferences</p>
+      <p class="pub-authors">Nersisyan L, <b class="me">Simonyan AA</b>, Binder H, Arakelyan A</p>
+      <p class="pub-venue"><i>Frontiers in Genetics</i> · <a class="doi" href="https://doi.org/10.3389/fgene.2021.662464" target="_blank" rel="noopener">doi:10.3389/fgene.2021.662464</a></p>
+    </div></div>
+    <div class="row"><div class="date">2021</div><div class="body">
+      <p class="pub-title">Transcriptome patterns of BRCA1- and BRCA2-mutated breast and ovarian cancers</p>
+      <p class="pub-authors">Arakelyan A, Melkonyan A, Hakobyan S, Boyarskih U, <b class="me">Simonyan AA</b>, Nersisyan L, Nikoghosyan M, Filipenko M, Binder H</p>
+      <p class="pub-venue"><i>International Journal of Molecular Sciences</i> · <a class="doi" href="https://doi.org/10.3390/ijms22031266" target="_blank" rel="noopener">doi:10.3390/ijms22031266</a></p>
+    </div></div>
+    <div class="row"><div class="date">2020</div><div class="body">
+      <p class="pub-title">Reliability assessment of biology tests with the Kuder–Richardson method</p>
+      <p class="pub-authors"><b class="me">Simonyan AA</b>, Ghukasyan G</p>
+      <p class="pub-venue"><i>Bnaget</i></p>
+    </div></div>
+    <div class="row"><div class="date">2020</div><div class="body">
+      <p class="pub-title">Tissue engineering liver: an emerging therapy for hepatic diseases</p>
+      <p class="pub-authors">Girgoryan M, <b class="me">Simonyan AA</b>, Khachatryan V, Simonyan A</p>
+      <p class="pub-venue"><i>The New Armenian Medical Journal</i></p>
+    </div></div>
+    <div class="row"><div class="date">2019</div><div class="body">
+      <p class="pub-title">Transcriptome-guided drug repositioning</p>
+      <p class="pub-authors">Arakelyan A, Nersisyan L, Nikoghosyan M, Hakobyan S, <b class="me">Simonyan AA</b>, Hopp L, Loffler-Wirth H, Binder H</p>
+      <p class="pub-venue"><i>Pharmaceutics</i> · <a class="doi" href="https://doi.org/10.3390/pharmaceutics11120677" target="_blank" rel="noopener">doi:10.3390/pharmaceutics11120677</a></p>
+    </div></div>
+    <div class="row"><div class="date">2019</div><div class="body">
+      <p class="pub-title">Analysis of transcriptome changes in response to heavy metals using self-organizing maps</p>
+      <p class="pub-authors"><b class="me">Simonyan AA</b>, Stepanyan A</p>
+      <p class="pub-venue"><i>Katchar Scientific Periodical</i></p>
+    </div></div>
+
+    <h3 class="sub">Book chapter</h3>
+    <div class="row"><div class="date">2020</div><div class="body">
+      <p class="pub-title">Bioreactors</p>
+      <p class="pub-authors"><b class="me">Simonyan AA</b>, Sarvazyan N</p>
+      <p class="pub-venue">In: Sarvazyan N (ed.), <i>Tissue Engineering</i>, Learning Materials in Biosciences. Springer, Cham · <a class="doi" href="https://doi.org/10.1007/978-3-030-39698-5_11" target="_blank" rel="noopener">doi:10.1007/978-3-030-39698-5_11</a></p>
+    </div></div>
+
+    <h3 class="sub">Conference proceedings</h3>
+    <div class="row"><div class="date">2020</div><div class="body">
+      <p class="pub-title">Quantitative trait locus analysis in spasmodic dysphonia</p>
+      <p class="pub-authors"><b class="me">Simonyan AA</b></p>
+      <p class="pub-venue">In: Darbinyan A (ed.), <i>Proceedings of the XIV Annual International Conference of Russian-Armenian University</i>. Russian-Armenian University, Yerevan</p>
+    </div></div>
+
+    <h3 class="sub">Selected conference presentations</h3>
+    <div class="row"><div class="date">2026</div><div class="body">
+      <p class="pub-title">Human-, Rosetta- versus AlphaFold-based design of ghrelin receptor ligands</p>
+      <p class="pub-venue">2nd GPCR Forum (virtual) · oral</p>
+    </div></div>
+    <div class="row"><div class="date">2025</div><div class="body">
+      <p class="pub-title">New ML-driven approaches for peptide hormone and drug discovery</p>
+      <p class="pub-venue">76th Mosbacher Kolloquium, <i>AI-driven (r)evolution in structural biology &amp; protein design</i>, Germany · oral</p>
+    </div></div>
+    <div class="row"><div class="date">2019</div><div class="body">
+      <p class="pub-title">Genome-wide association study in laryngeal dystonia</p>
+      <p class="pub-venue">XIV Annual International Conference of Russian-Armenian University, Armenia · oral</p>
+    </div></div>
+    <div class="row"><div class="date">2018–20</div><div class="body">
+      <p class="pub-venue">Four international student conference talks and over 20 poster presentations</p>
+    </div></div>
+  </section>
+
+  <!-- ── Teaching and outreach ── -->
+  <section id="teaching">
+    <h2>Teaching and outreach</h2>
+    <ul>
+      <li class="def">SLKKIL112U Structure-based Drug Research (UCPH, B.Sc.)</li>
+      <li class="def">SFAB20004U Cellular and Molecular Biology (UCPH, B.Sc.)</li>
+      <li class="def">Supervision of 3 M.Sc. projects</li>
+      <li class="def">Organisation of the <a href="https://ibo-info.org" target="_blank" rel="noopener">International Biology Olympiad</a></li>
+      <li class="def">Content development at <a href="https://hy.khanacademy.org" target="_blank" rel="noopener">Khan Academy</a> (Armenian)</li>
+    </ul>
+  </section>
+
+  <!-- ── Media ── -->
+  <section id="media" class="no-print">
+    <h2>Media</h2>
+
+    <div class="media-group">
+      <div class="grid">
+        <figure>
+          <div class="frame">
+            <video controls preload="metadata" playsinline>
+              <source src="ddsa_arman_simonyan_2023.mp4#t=0.5" type="video/mp4" />
+            </video>
           </div>
-        </div>
+          <figcaption><span class="meta">Danish Data Science Academy · 2023</span>DDSA PhD Fellow presentation: AI-powered GPCR drug discovery</figcaption>
+        </figure>
+        <figure>
+          <a class="frame yt" data-id="0z7F1RtZoJY" href="https://www.youtube.com/watch?v=0z7F1RtZoJY" target="_blank" rel="noopener" aria-label="Play: First experiments growing organs outside the body in Armenia">
+            <img src="https://i.ytimg.com/vi/0z7F1RtZoJY/hqdefault.jpg" alt="" loading="lazy" />
+          </a>
+          <figcaption><span class="meta">Armenian Public TV · 2017</span>First experiments growing organs outside the body in Armenia</figcaption>
+        </figure>
+        <figure>
+          <a class="frame yt" data-id="GQP8U6nU52k" href="https://www.youtube.com/watch?v=GQP8U6nU52k" target="_blank" rel="noopener" aria-label="Play: The Biology Olympiad medalist's second passion: painting">
+            <img src="https://i.ytimg.com/vi/GQP8U6nU52k/hqdefault.jpg" alt="" loading="lazy" />
+          </a>
+          <figcaption><span class="meta">Interview · 2015</span>The Biology Olympiad medalist's second passion: painting</figcaption>
+        </figure>
+        <figure>
+          <a class="frame yt" data-id="IoO5QA5BkSw" href="https://www.youtube.com/watch?v=IoO5QA5BkSw" target="_blank" rel="noopener" aria-label="Play: Մնացի ես (I Stayed), short film">
+            <img src="https://i.ytimg.com/vi/IoO5QA5BkSw/hqdefault.jpg" alt="" loading="lazy" />
+          </a>
+          <figcaption><span class="meta">MEK KADR International Short Film Festival · 2018</span>Մնացի ես (I Stayed), short film</figcaption>
+        </figure>
+      </div>
+    </div>
 
-        <div class="award-card fade-in">
-          <div class="award-icon"><i class="fa-solid fa-star"></i></div>
-          <div>
-            <div class="award-year">2022</div>
-            <div class="award-title">Best Presentation Award — RSU International Conference, Riga, Latvia</div>
-          </div>
-        </div>
-
-        <div class="award-card fade-in">
-          <div class="award-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-          <div>
-            <div class="award-year">2020 – 2022</div>
-            <div class="award-title">Danish Government Scholarship for Non-EU Students</div>
-          </div>
-        </div>
-
-        <div class="award-card fade-in">
-          <div class="award-icon"><i class="fa-solid fa-laptop-code"></i></div>
-          <div>
-            <div class="award-year">2019</div>
-            <div class="award-title">State Award for Best Student in IT — Republic of Armenia</div>
-          </div>
-        </div>
-
-        <div class="award-card fade-in">
-          <div class="award-icon"><i class="fa-solid fa-flask"></i></div>
-          <div>
-            <div class="award-year">2019</div>
-            <div class="award-title">AGBU Summer Research Scholarship — USA</div>
-          </div>
-        </div>
-
-        <div class="award-card fade-in">
-          <div class="award-icon"><i class="fa-solid fa-medal"></i></div>
-          <div>
-            <div class="award-year">2016 – 2020</div>
-            <div class="award-title">Academic Excellence Scholarship — American University of Armenia</div>
-          </div>
-        </div>
-
-        <div class="award-card fade-in">
-          <div class="award-icon"><i class="fa-solid fa-trophy"></i></div>
-          <div>
-            <div class="award-year">2016</div>
-            <div class="award-title">Presidential Award for Best Student in IT — Republic of Armenia</div>
-          </div>
-        </div>
-
-        <div class="award-card fade-in">
-          <div class="award-icon"><i class="fa-solid fa-earth-europe"></i></div>
-          <div>
-            <div class="award-year">2015</div>
-            <div class="award-title">Bronze Medal — 26th International Biology Olympiad, Copenhagen, Denmark</div>
-          </div>
-        </div>
-
-        <div class="award-card fade-in">
-          <div class="award-icon"><i class="fa-solid fa-earth-asia"></i></div>
-          <div>
-            <div class="award-year">2014</div>
-            <div class="award-title">Bronze Medal — 25th International Biology Olympiad, Bali, Indonesia</div>
-          </div>
-        </div>
-
+    <div class="media-group">
+      <h3>Hungry Lemon Panda</h3>
+      <p class="note">Computer science explainers in Armenian. <a href="https://www.youtube.com/playlist?list=PLPzZl4HGv4AIZm6N_me8Cx80s41J26qhr" target="_blank" rel="noopener">Full playlist</a></p>
+      <div class="grid small">
+        <figure>
+          <a class="frame yt" data-id="o_Yuro_0KAY" href="https://www.youtube.com/watch?v=o_Yuro_0KAY" target="_blank" rel="noopener" aria-label="Play: Binary system">
+            <img src="https://i.ytimg.com/vi/o_Yuro_0KAY/hqdefault.jpg" alt="" loading="lazy" />
+          </a>
+          <figcaption>Binary system</figcaption>
+        </figure>
+        <figure>
+          <a class="frame yt" data-id="K_ju4SMKdtA" href="https://www.youtube.com/watch?v=K_ju4SMKdtA" target="_blank" rel="noopener" aria-label="Play: Variables">
+            <img src="https://i.ytimg.com/vi/K_ju4SMKdtA/hqdefault.jpg" alt="" loading="lazy" />
+          </a>
+          <figcaption>Variables</figcaption>
+        </figure>
+        <figure>
+          <a class="frame yt" data-id="ZEWtwEbZcFo" href="https://www.youtube.com/watch?v=ZEWtwEbZcFo" target="_blank" rel="noopener" aria-label="Play: Boolean operators">
+            <img src="https://i.ytimg.com/vi/ZEWtwEbZcFo/hqdefault.jpg" alt="" loading="lazy" />
+          </a>
+          <figcaption>Boolean operators</figcaption>
+        </figure>
+        <figure>
+          <a class="frame yt" data-id="YKtEufmA4Kw" href="https://www.youtube.com/watch?v=YKtEufmA4Kw" target="_blank" rel="noopener" aria-label="Play: Recursion">
+            <img src="https://i.ytimg.com/vi/YKtEufmA4Kw/hqdefault.jpg" alt="" loading="lazy" />
+          </a>
+          <figcaption>Recursion</figcaption>
+        </figure>
+        <figure>
+          <a class="frame yt" data-id="7v1Rxg6af60" href="https://www.youtube.com/watch?v=7v1Rxg6af60" target="_blank" rel="noopener" aria-label="Play: Recursive factorial">
+            <img src="https://i.ytimg.com/vi/7v1Rxg6af60/hqdefault.jpg" alt="" loading="lazy" />
+          </a>
+          <figcaption>Recursive factorial</figcaption>
+        </figure>
+        <figure>
+          <a class="frame yt" data-id="yYF5H4Vs6yQ" href="https://www.youtube.com/watch?v=yYF5H4Vs6yQ" target="_blank" rel="noopener" aria-label="Play: The TriangleStars function">
+            <img src="https://i.ytimg.com/vi/yYF5H4Vs6yQ/hqdefault.jpg" alt="" loading="lazy" />
+          </a>
+          <figcaption>The TriangleStars function</figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <!-- ═══ INTERNATIONAL BIOLOGY OLYMPIAD ═══ -->
-  <section id="ibo">
-    <div class="max-width">
-      <p class="section-label fade-in">06 / Service</p>
-      <h2 class="section-title fade-in">Biology Olympiad <span>Contributions</span></h2>
-      <div class="section-divider fade-in"></div>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem" class="ibo-grid">
-
-        <!-- Armenian Republican Olympiad -->
-        <div class="award-card fade-in" style="grid-column:1/-1">
-          <div class="award-icon"><i class="fa-solid fa-flag"></i></div>
-          <div>
-            <div class="award-title">Armenian Republican Biology Olympiad Committee</div>
-            <div class="award-year">2018 – 2022</div>
-            <div class="award-body" style="margin-top:.75rem;color:var(--text-muted);font-size:.95rem;line-height:1.7">
-              Core member responsible for the annual national student competition:
-              <ul style="margin:.5rem 0 0 1.2rem;padding:0">
-                <li>Designed theoretical and practical exam content — including <strong>bioinformatics tasks introduced for the first time in Armenian educational history</strong></li>
-                <li>Coached 5 successive national teams selected for the International Biology Olympiad</li>
-                <li>Formulated national selection exams and training curricula across 5 years</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- IBO Jury & Delegation -->
-        <div class="award-card fade-in">
-          <div class="award-icon"><i class="fa-solid fa-globe"></i></div>
-          <div>
-            <div class="award-title">IBO Jury Member &amp; Armenian Delegation Representative</div>
-            <div class="award-year">2019 – 2022</div>
-            <div class="award-body" style="margin-top:.75rem;color:var(--text-muted);font-size:.95rem;line-height:1.7">
-              <ul style="margin:.5rem 0 0 1.2rem;padding:0">
-                <li><strong>Szeged, Hungary (2019)</strong> — Jury member &amp; delegation representative</li>
-                <li><strong>Nagasaki, Japan (2020)</strong> — Jury member &amp; delegation representative</li>
-              </ul>
-              <div style="margin-top:.75rem">
-                <a href="https://ibo-info.org" target="_blank" rel="noopener" style="color:var(--teal);font-size:.9rem"><i class="fa-solid fa-arrow-up-right-from-square"></i> ibo-info.org</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- IBO 2022 Armenia Host -->
-        <div class="award-card fade-in">
-          <div class="award-icon"><i class="fa-solid fa-star"></i></div>
-          <div>
-            <div class="award-title">33rd IBO — Organising Member &amp; Practical Task Author</div>
-            <div class="award-year">2022 · Yerevan, Armenia</div>
-            <div class="award-body" style="margin-top:.75rem;color:var(--text-muted);font-size:.95rem;line-height:1.7">
-              <ul style="margin:.5rem 0 0 1.2rem;padding:0">
-                <li>Core academic organiser for the world's largest international biology competition for high school students</li>
-                <li><strong>Author of one of the four practical tasks</strong> administered to all international participants</li>
-                <li>Co-chaired academic discussion panels; supervised 2 international group projects</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Danish Biology Olympiad -->
-        <div class="award-card fade-in" style="grid-column:1/-1">
-          <div class="award-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
-          <div>
-            <div class="award-title">Danish Biology Olympiad — Bioinformatics Training</div>
-            <div class="award-year">2023 · Denmark</div>
-            <div class="award-body" style="margin-top:.75rem;color:var(--text-muted);font-size:.95rem;line-height:1.7">
-              Contributed to the Danish Biology Olympiad committee by designing and delivering bioinformatics training sessions for Danish national delegates preparing for the International Biology Olympiad.
-            </div>
-          </div>
-        </div>
-
-      </div><!-- end ibo-grid -->
-
-      <div style="margin-top:2rem;text-align:center" class="fade-in">
-        <a class="scholar-link" href="https://ibo-info.org" target="_blank" rel="noopener">
-          <i class="fa-solid fa-globe"></i> International Biology Olympiad — ibo-info.org
-        </a>
-      </div>
-
-    </div>
+  <!-- ── Press ── -->
+  <section id="press" class="no-print">
+    <h2>Press</h2>
+    <ul class="links">
+      <li><a href="https://ddsa.dk/member/arman-simonyan/" target="_blank" rel="noopener">Danish Data Science Academy: PhD Fellow profile</a><span class="meta">2023</span></li>
+      <li><a href="https://brain.harvard.edu/hbi_humans/arman-simonyan/" target="_blank" rel="noopener">HBI Humans: Arman Simonyan</a><span class="meta">Harvard Brain Science Initiative · 2019</span></li>
+      <li><a href="https://mediamax.am/en/specialprojects/mathart/35715/" target="_blank" rel="noopener">Children should enjoy learning math</a><span class="meta">MediaMax · 2019</span></li>
+    </ul>
   </section>
 
-  <!-- ═══ MEDIA & ENGAGEMENT ═══ -->
-  <section id="media">
-    <div class="max-width">
-      <p class="section-label fade-in">07 / Public Engagement</p>
-      <h2 class="section-title fade-in">Media, Education <span>&amp; Outreach</span></h2>
-      <div class="section-divider fade-in"></div>
-
-      <!-- ── SUBSECTION: Media Appearances (carousel) ── -->
-      <div class="engage-subsection fade-in">
-        <div class="subsection-label"><i class="fa-solid fa-satellite-dish"></i> Media Appearances</div>
-        <div class="carousel-wrap">
-          <button class="carousel-btn prev" id="c1prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
-          <div class="carousel-track-outer">
-            <div class="carousel-track" id="c1track">
-
-              <div class="media-card">
-                <video controls preload="none">
-                  <source src="ddsa_arman_simonyan_2023.mp4" type="video/mp4">
-                </video>
-                <div class="media-card-body">
-                  <div class="media-card-tag"><i class="fa-solid fa-video"></i> Video · DDSA · 2023</div>
-                  <div class="media-card-title">DDSA PhD Fellow Presentation — AI-Powered GPCR Drug Discovery</div>
-                  <div class="media-card-desc">Featured by the Danish Data Science Academy as part of the 2023 PhD Fellow cohort, presenting ML-driven peptide and drug design for GPCRs.</div>
-                  <a class="media-card-link" href="https://ddsa.dk/member/arman-simonyan/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> DDSA Profile</a>
-                </div>
-              </div>
-
-              <div class="media-card">
-                <div style="background:linear-gradient(135deg,#1a0a2e,#1e1640);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;padding:2rem">
-                  <div style="text-align:center">
-                    <div style="font-size:2.5rem;margin-bottom:.5rem">🧠</div>
-                    <span style="font-size:.85rem;color:#a0b0c8;font-weight:600">Harvard Brain Science Initiative</span>
-                  </div>
-                </div>
-                <div class="media-card-body">
-                  <div class="media-card-tag"><i class="fa-solid fa-user"></i> Profile · Harvard · 2019</div>
-                  <div class="media-card-title">HBI Humans: Arman Simonyan</div>
-                  <div class="media-card-desc">"I am inspired by the void I can fill." — Interview during his research residency at Harvard Medical School &amp; Massachusetts Eye and Ear, working on Dystonia brain signals.</div>
-                  <a class="media-card-link" href="https://brain.harvard.edu/hbi_humans/arman-simonyan/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read profile</a>
-                </div>
-              </div>
-
-              <div class="media-card">
-                <a href="https://mediamax.am/en/specialprojects/mathart/35715/" target="_blank" rel="noopener">
-                  <img src="https://mediamax.am/datas/znews/big_/2019/11/1574688130_7143273.jpg" alt="MediaMax MathArt" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">
-                </a>
-                <div class="media-card-body">
-                  <div class="media-card-tag"><i class="fa-solid fa-newspaper"></i> Press · MediaMax · 2019</div>
-                  <div class="media-card-title">Children should enjoy learning math</div>
-                  <div class="media-card-desc">MediaMax MathArt special project feature on the intersection of science, mathematics, and creativity, following his International Biology Olympiad medals.</div>
-                  <a class="media-card-link" href="https://mediamax.am/en/specialprojects/mathart/35715/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read article</a>
-                </div>
-              </div>
-
-              <div class="media-card">
-                <iframe src="https://www.youtube.com/embed/0z7F1RtZoJY" title="Growing organs outside the body — Armenian Public TV (2017)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                <div class="media-card-body">
-                  <div class="media-card-tag"><i class="fa-brands fa-youtube"></i> TV Feature · Armenian Public TV · 2017</div>
-                  <div class="media-card-title">First Experiments Growing Organs Outside the Body in Armenia</div>
-                  <div class="media-card-desc">Armenian national television (1tv.am) feature on tissue engineering work at the Orbeli Institute of Physiology during his research residency.</div>
-                </div>
-              </div>
-
-              <div class="media-card">
-                <iframe src="https://www.youtube.com/embed/GQP8U6nU52k" title="Biology Olympiad medalist — painter interview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                <div class="media-card-body">
-                  <div class="media-card-tag"><i class="fa-brands fa-youtube"></i> Interview · 2015</div>
-                  <div class="media-card-title">The Biology Olympiad Medalist's Second Passion: Painting</div>
-                  <div class="media-card-desc">Profile following his IBO bronze medal — exploring how his brushwork combines expressionism and impressionism alongside his scientific pursuits.</div>
-                </div>
-              </div>
-
-              <div class="media-card">
-                <iframe src="https://www.youtube.com/embed/IoO5QA5BkSw" title="Arman Simonyan — MEK KADR Short Film Festival" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                <div class="media-card-body">
-                  <div class="media-card-tag"><i class="fa-solid fa-film"></i> Film · MEK KADR Festival · 2018</div>
-                  <div class="media-card-title">Մնացի ես (I Stayed) — 16th International Short Film Festival</div>
-                  <div class="media-card-desc">Arman's short film screened at the MEK KADR (ONE FRAME) 16th International Short Film Festival Open Platform, June 2018.</div>
-                </div>
-              </div>
-
-            </div><!-- /carousel-track -->
-          </div><!-- /track-outer -->
-          <button class="carousel-btn next" id="c1next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-        <div class="carousel-dots" id="c1dots"></div>
-      </div>
-
-      <!-- ── SUBSECTION: CS Education Videos ── -->
-      <div class="engage-subsection fade-in">
-        <div class="subsection-label"><i class="fa-solid fa-chalkboard-user"></i> CS Education — Hungry Lemon Panda</div>
-        <p style="color:var(--text-secondary);font-size:.9rem;margin-bottom:1.5rem;max-width:700px">
-          A series of computer science explainer videos in Armenian, produced under the <strong style="color:var(--text-primary)">Hungry Lemon Panda</strong> channel — making programming concepts accessible to Armenian-speaking students through clear, animated explanations.
-        </p>
-        <div class="carousel-wrap">
-          <button class="carousel-btn prev" id="c2prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
-          <div class="carousel-track-outer">
-            <div class="carousel-track" id="c2track">
-
-              <div class="media-card">
-                <iframe src="https://www.youtube.com/embed/o_Yuro_0KAY" title="Binary System in Armenian" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                <div class="media-card-body">
-                  <div class="media-card-tag"><i class="fa-solid fa-code"></i> CS Education · Armenian · No. 1</div>
-                  <div class="media-card-title">Հաշվարկման երկուական համակարգը — Binary System</div>
-                  <div class="media-card-desc">Introduction to the binary number system, the foundation of all digital computing — explained in Armenian for students.</div>
-                </div>
-              </div>
-
-              <div class="media-card">
-                <iframe src="https://www.youtube.com/embed/K_ju4SMKdtA" title="Variables in Armenian" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                <div class="media-card-body">
-                  <div class="media-card-tag"><i class="fa-solid fa-code"></i> CS Education · Armenian · No. 2</div>
-                  <div class="media-card-title">Փոփոխականներ — Variables</div>
-                  <div class="media-card-desc">Understanding variables in programming — a core building block of all software, explained simply in Armenian.</div>
-                </div>
-              </div>
-
-              <div class="media-card">
-                <iframe src="https://www.youtube.com/embed/ZEWtwEbZcFo" title="Boolean Operators in Armenian" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                <div class="media-card-body">
-                  <div class="media-card-tag"><i class="fa-solid fa-code"></i> CS Education · Armenian · No. 3</div>
-                  <div class="media-card-title">Բուլյան օպերատորներ — Boolean Operators</div>
-                  <div class="media-card-desc">Boolean logic and operators — AND, OR, NOT — explained in Armenian with practical programming examples.</div>
-                </div>
-              </div>
-
-              <div class="media-card">
-                <iframe src="https://www.youtube.com/embed/YKtEufmA4Kw" title="Recursion in Armenian" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                <div class="media-card-body">
-                  <div class="media-card-tag"><i class="fa-solid fa-code"></i> CS Education · Armenian · No. 4</div>
-                  <div class="media-card-title">Recursion — Explained by Hungry Lemon Panda</div>
-                  <div class="media-card-desc">Recursion demystified — one of the trickiest concepts in computer science, made intuitive in Armenian.</div>
-                </div>
-              </div>
-
-              <div class="media-card">
-                <iframe src="https://www.youtube.com/embed/7v1Rxg6af60" title="Recursive Factorial in Armenian" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                <div class="media-card-body">
-                  <div class="media-card-tag"><i class="fa-solid fa-code"></i> CS Education · Armenian · No. 5</div>
-                  <div class="media-card-title">Recursive Factorial — Hungry Lemon Dracula</div>
-                  <div class="media-card-desc">A worked example of recursion using the classic factorial function, with clear step-by-step reasoning in Armenian.</div>
-                </div>
-              </div>
-
-              <div class="media-card">
-                <iframe src="https://www.youtube.com/embed/yYF5H4Vs6yQ" title="TriangleStars Function in Armenian" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                <div class="media-card-body">
-                  <div class="media-card-tag"><i class="fa-solid fa-code"></i> CS Education · Armenian · No. 6</div>
-                  <div class="media-card-title">The TriangleStars Function — Hungry Lemon Panda</div>
-                  <div class="media-card-desc">Putting it all together — a practical recursive function building triangle patterns, illustrating clean algorithmic thinking.</div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <button class="carousel-btn next" id="c2next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-        <div class="carousel-dots" id="c2dots"></div>
-      </div>
-
-      <!-- ── SUBSECTION: Education & Outreach ── -->
-      <div class="engage-subsection fade-in">
-        <div class="subsection-label"><i class="fa-solid fa-earth-europe"></i> Education &amp; Outreach</div>
-        <div class="edu-grid">
-
-          <div class="khan-card">
-            <div class="khan-icon">🎓</div>
-            <div>
-              <div style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem">Khan Academy Armenian · 3 Years</div>
-              <div style="font-weight:600;font-size:.95rem;margin-bottom:.5rem">Mathematics, Science &amp; Art History Translation</div>
-              <div style="font-size:.82rem;color:var(--text-secondary);line-height:1.55">Contributed 3 years to the creation and translation of Khan Academy's <strong style="color:var(--text-primary)">Mathematics</strong>, <strong style="color:var(--text-primary)">Science</strong>, and <strong style="color:var(--text-primary)">Art History</strong> sections in Armenian — bringing free world-class education to Armenian-speaking students globally.</div>
-              <a class="media-card-link" style="margin-top:.75rem" href="https://hy.khanacademy.org" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Khan Academy in Armenian</a>
-            </div>
-          </div>
-
-          <div class="khan-card">
-            <div class="khan-icon" style="background:linear-gradient(135deg,#1a3a6e,#0f2d5e);box-shadow:0 4px 12px rgba(30,80,200,.3)">💻</div>
-            <div>
-              <div style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem">Hungry Lemon Panda · 6 Videos</div>
-              <div style="font-weight:600;font-size:.95rem;margin-bottom:.5rem">CS Education Channel in Armenian</div>
-              <div style="font-size:.82rem;color:var(--text-secondary);line-height:1.55">Created a series of computer science explainer videos in Armenian covering binary systems, variables, Boolean logic, recursion, and algorithms — making CS fundamentals accessible to Armenian-speaking learners.</div>
-              <a class="media-card-link" style="margin-top:.75rem" href="https://www.youtube.com/playlist?list=PLPzZl4HGv4AIZm6N_me8Cx80s41J26qhr" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i> Watch full playlist</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ── SUBSECTION: Articles & Press ── -->
-      <div class="engage-subsection fade-in">
-        <div class="subsection-label"><i class="fa-solid fa-pen-nib"></i> Articles &amp; Press</div>
-        <ul class="article-list">
-          <li>
-            <i class="fa-solid fa-newspaper art-icon"></i>
-            <div class="art-body">
-              <div class="art-tag">Feature · MediaMax MathArt · 2019</div>
-              <div class="art-title"><a href="https://mediamax.am/en/specialprojects/mathart/35715/" target="_blank" rel="noopener">Arman Simonyan: Children should enjoy learning math</a></div>
-              <div class="art-desc">Interview in MediaMax's MathArt special project on science, mathematics, and creativity.</div>
-            </div>
-          </li>
-          <li>
-            <i class="fa-solid fa-brain art-icon"></i>
-            <div class="art-body">
-              <div class="art-tag">Profile · Harvard Brain Science Initiative · 2019</div>
-              <div class="art-title"><a href="https://brain.harvard.edu/hbi_humans/arman-simonyan/" target="_blank" rel="noopener">HBI Humans: Arman Simonyan</a></div>
-              <div class="art-desc">"I am inspired by the void I can fill." Research profile from the Harvard Brain Science Initiative during his summer at Harvard Medical School.</div>
-            </div>
-          </li>
-          <li>
-            <i class="fa-solid fa-award art-icon"></i>
-            <div class="art-body">
-              <div class="art-tag">Fellow Feature · DDSA · 2023</div>
-              <div class="art-title"><a href="https://ddsa.dk/member/arman-simonyan/" target="_blank" rel="noopener">Danish Data Science Academy — PhD Fellow Profile</a></div>
-              <div class="art-desc">Featured as a 2023 DDSA PhD Fellow for research in AI-powered drug discovery for G protein-coupled receptors.</div>
-            </div>
-          </li>
-          <li>
-            <i class="fa-solid fa-building-columns art-icon"></i>
-            <div class="art-body">
-              <div class="art-tag">Institutional Profile · University of Copenhagen</div>
-              <div class="art-title"><a href="https://drug.ku.dk/staff/?pure=en/persons/693020" target="_blank" rel="noopener">KU Staff Page — Department of Drug Design and Pharmacology</a></div>
-              <div class="art-desc">Official institutional research profile at the University of Copenhagen.</div>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-    </div>
+  <!-- ── Links ── -->
+  <section id="links" class="no-print">
+    <h2>Links</h2>
+    <ul class="links inline">
+      <li><a href="https://scholar.google.com/citations?hl=en&amp;user=w0gAP7IAAAAJ" target="_blank" rel="noopener">Google Scholar</a></li>
+      <li><a href="https://orcid.org/0000-0002-1032-1073" target="_blank" rel="noopener">ORCID</a></li>
+      <li><a href="https://www.researchgate.net/profile/Arman-Simonyan" target="_blank" rel="noopener">ResearchGate</a></li>
+      <li><a href="https://github.com/rmnsimonyan" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/scientist-arman-simonyan" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://drug.ku.dk/staff/?pure=en/persons/693020" target="_blank" rel="noopener">UCPH staff page</a></li>
+    </ul>
   </section>
 
-  <!-- ═══ CONTACT ═══ -->
-  <section id="contact">
-    <div class="contact-inner">
-      <p class="section-label fade-in" style="text-align:center">08 / Contact</p>
-      <h2 class="section-title fade-in" style="text-align:center">Let's <span>Connect</span></h2>
-      <div class="section-divider fade-in" style="margin:0 auto 3rem"></div>
-      <p class="contact-lead fade-in">
-        I am open to research collaborations, industry roles in computational drug discovery, and scientific data engineering positions. Feel free to reach out.
-      </p>
-      <div class="contact-links fade-in">
-        <a href="mailto:rmnsimonyan@gmail.com" class="contact-link">
-          <i class="fa-solid fa-envelope"></i>
-          rmnsimonyan@gmail.com
-        </a>
-        <a href="https://www.linkedin.com/in/scientist-arman-simonyan" target="_blank" rel="noopener" class="contact-link">
-          <i class="fa-brands fa-linkedin"></i>
-          LinkedIn
-        </a>
-        <a href="https://github.com/rmnsimonyan" target="_blank" rel="noopener" class="contact-link">
-          <i class="fa-brands fa-github"></i>
-          github.com/rmnsimonyan
-        </a>
-        <a href="https://scholar.google.com/citations?hl=en&user=w0gAP7IAAAAJ" target="_blank" rel="noopener" class="contact-link">
-          <i class="fa-solid fa-graduation-cap"></i>
-          Google Scholar
-        </a>
-        <a href="https://orcid.org/0000-0002-1032-1073" target="_blank" rel="noopener" class="contact-link">
-          <i class="fa-brands fa-orcid"></i>
-          ORCID 0000-0002-1032-1073
-        </a>
-        <a href="https://www.researchgate.net/profile/Arman-Simonyan" target="_blank" rel="noopener" class="contact-link">
-          <i class="fa-brands fa-researchgate"></i>
-          ResearchGate
-        </a>
-        <a href="https://drug.ku.dk/staff/?pure=en/persons/693020" target="_blank" rel="noopener" class="contact-link">
-          <i class="fa-solid fa-building-columns"></i>
-          KU Research Profile
-        </a>
-        <a href="https://ddsa.dk/member/arman-simonyan/" target="_blank" rel="noopener" class="contact-link">
-          <i class="fa-solid fa-award"></i>
-          DDSA Fellow
-        </a>
-      </div>
-    </div>
-  </section>
+  <footer>Arman A. Simonyan · Copenhagen</footer>
+</main>
+</div>
 
-  <!-- ═══ FOOTER ═══ -->
-  <footer>
-    <p>Built by <span>Arman Simonyan</span> &mdash; Copenhagen, Denmark &mdash; <span id="year"></span></p>
-  </footer>
-
-  <!-- ═══ SCRIPTS ═══ -->
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
-
-    const navToggle = document.getElementById('navToggle');
-    const navLinks  = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => {
-      navToggle.classList.toggle('open');
-      navLinks.classList.toggle('open');
+<script>
+  // Highlight the section currently in view in the section index.
+  (function () {
+    var links = {};
+    document.querySelectorAll('.toc a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+    if (!('IntersectionObserver' in window)) return;
+    var current;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        if (current) current.classList.remove('active');
+        current = links[e.target.id];
+        if (!current) return;
+        current.classList.add('active');
+        var nav = current.closest('.toc');
+        if (nav && nav.scrollWidth > nav.clientWidth) {
+          nav.scrollLeft = current.offsetLeft - (nav.clientWidth - current.offsetWidth) / 2;
+        }
+      });
+    }, { rootMargin: '-15% 0px -75% 0px' });
+    Object.keys(links).forEach(function (id) {
+      var s = document.getElementById(id);
+      if (s) io.observe(s);
     });
+  })();
 
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        navToggle.classList.remove('open');
-        navLinks.classList.remove('open');
-      });
+  // Load YouTube players only when clicked (keeps the page light; links still work without JS).
+  document.querySelectorAll('a.yt').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + a.dataset.id + '?autoplay=1&rel=0';
+      f.title = a.getAttribute('aria-label').replace(/^Play: /, '');
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      f.allowFullscreen = true;
+      var box = document.createElement('div');
+      box.className = 'frame';
+      box.appendChild(f);
+      a.replaceWith(box);
     });
-
-    const sections   = document.querySelectorAll('section[id]');
-    const navAnchors = document.querySelectorAll('.nav-links a');
-    const secObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navAnchors.forEach(a => {
-            a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
-          });
-        }
-      });
-    }, { threshold: 0.35 });
-    sections.forEach(s => secObserver.observe(s));
-
-    // ── Carousel factory ──
-    function initCarousel(trackId, prevId, nextId, dotsId) {
-      const track = document.getElementById(trackId);
-      const prev  = document.getElementById(prevId);
-      const next  = document.getElementById(nextId);
-      const dotsEl= document.getElementById(dotsId);
-      if (!track) return;
-
-      const cards = track.querySelectorAll('.media-card');
-      let idx = 0;
-
-      function visibleCount() {
-        const w = track.parentElement.offsetWidth;
-        if (w < 600) return 1;
-        if (w < 900) return 2;
-        return 3;
-      }
-
-      function maxIdx() { return Math.max(0, cards.length - visibleCount()); }
-
-      function cardWidth() {
-        const gap = 24;
-        return (track.parentElement.offsetWidth - gap * (visibleCount()-1)) / visibleCount();
-      }
-
-      function buildDots() {
-        dotsEl.innerHTML = '';
-        const pages = maxIdx() + 1;
-        for (let i = 0; i < pages; i++) {
-          const d = document.createElement('button');
-          d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-          d.addEventListener('click', () => goTo(i));
-          dotsEl.appendChild(d);
-        }
-      }
-
-      function goTo(i) {
-        idx = Math.max(0, Math.min(i, maxIdx()));
-        const gap = 24;
-        const cw  = cardWidth();
-        track.style.transform = `translateX(-${idx * (cw + gap)}px)`;
-        // set all card widths
-        cards.forEach(c => { c.style.flex = `0 0 ${cw}px`; c.style.minWidth = `${cw}px`; });
-        prev.disabled = idx === 0;
-        next.disabled = idx >= maxIdx();
-        dotsEl.querySelectorAll('.carousel-dot').forEach((d,j) => d.classList.toggle('active', j === idx));
-      }
-
-      prev.addEventListener('click', () => goTo(idx - 1));
-      next.addEventListener('click', () => goTo(idx + 1));
-
-      function init() { buildDots(); goTo(0); }
-      init();
-      window.addEventListener('resize', () => { buildDots(); goTo(Math.min(idx, maxIdx())); });
-    }
-
-    initCarousel('c1track','c1prev','c1next','c1dots');
-    initCarousel('c2track','c2prev','c2next','c2dots');
-
-    const fadeItems = document.querySelectorAll('.fade-in');
-    const fadeObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          fadeObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    fadeItems.forEach(el => fadeObserver.observe(el));
-  </script>
+  });
+</script>
 </body>
 </html>
